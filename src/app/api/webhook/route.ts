@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { calculateBaZi } from '@/lib/bazi';
-import { sendBaZiReport } from '@/lib/email';
+import { sendBaZiReport, sendOwnerErrorAlert } from '@/lib/email';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'sk_test_placeholder', {
   apiVersion: '2025-03-31.basil' as any,
@@ -30,6 +30,11 @@ export async function POST(req: NextRequest) {
 
     if (!email || !birthDataRaw) {
       console.error('Missing email or birthData in session', { email, birthDataRaw });
+      await sendOwnerErrorAlert(
+        '订单数据缺失',
+        `Stripe session ${session.id} 缺少 email 或 birthData`,
+        { sessionId: session.id, hasEmail: !!email, hasBirthData: !!birthDataRaw },
+      );
       return NextResponse.json({ received: true, warning: 'Missing data for PDF generation' });
     }
 
@@ -56,6 +61,12 @@ export async function POST(req: NextRequest) {
       console.log(`✅ Report sent to ${email}`);
     } catch (err: any) {
       console.error('Failed to generate/send report:', err);
+      // 发送故障告警
+      await sendOwnerErrorAlert(
+        '报告生成/发送失败',
+        err.message,
+        { email, tier: session.metadata?.tier, sessionId: session.id },
+      );
       // 不返回 500 —— Stripe 会重试 webhook
       return NextResponse.json({ received: true, error: err.message });
     }
