@@ -648,8 +648,19 @@ export default function Home() {
         </main>
 
         <footer className="border-t border-[rgba(212,168,83,0.05)] py-6">
-          <div className="max-w-6xl mx-auto px-4 text-center text-[11px] text-[#3a2a1a]">
+          <div className="max-w-6xl mx-auto px-4 text-center">
+            <div className="flex justify-center gap-6 mb-3">
+              <a href="/blog" className="text-[11px] text-[#5a4a3a] hover:text-[#d4a853] transition-colors">
+                Blog
+              </a>
+              <span className="text-[#3a2a1a] text-[11px]">·</span>
+              <a href="mailto:support@dongfang.com" className="text-[11px] text-[#5a4a3a] hover:text-[#d4a853] transition-colors">
+                Contact
+              </a>
+            </div>
+            <p className="text-[11px] text-[#3a2a1a]">
             © {new Date().getFullYear()} 东方古老占卜 · Ancient Eastern Divination
+            </p>
           </div>
         </footer>
       </div>
