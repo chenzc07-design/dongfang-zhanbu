@@ -104,14 +104,12 @@ export default function Home() {
   const handleCheckout = async (product: ProductTier) => {
     setCheckoutLoading(true);
     try {
-      const priceId = product.id === 'premium'
-        ? (process.env.NEXT_PUBLIC_STRIPE_PRICE_PREMIUM || 'price_premium')
-        : (process.env.NEXT_PUBLIC_STRIPE_PRICE_FULL || 'price_full');
-      const res = await fetch('/api/create-checkout', {
+      const res = await fetch('/api/paypal/create', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          priceId, customerEmail: email, tier: product.id,
+          tier: product.id,
+          customerEmail: email,
           birthData: {
             year: Number(form.year), month: Number(form.month), day: Number(form.day),
             hour: Number(form.hour || 12), minute: Number(form.minute || 0),
@@ -120,10 +118,14 @@ export default function Home() {
         }),
       });
       const data = await res.json();
-      if (data.url) window.location.href = data.url;
-      else alert('Checkout failed. Please try again.');
+      if (data.approveUrl) {
+        // 跳转到 PayPal 支付页面
+        window.location.href = data.approveUrl;
+      } else {
+        alert('Checkout failed. Please try again later.');
+      }
     } catch (err) {
-      alert('Checkout unavailable. Configure Stripe keys to enable payments.');
+      alert('Checkout unavailable. Please try again.');
     } finally {
       setCheckoutLoading(false);
     }
