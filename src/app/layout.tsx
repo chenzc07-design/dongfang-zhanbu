@@ -27,10 +27,7 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <head>
-        {/* Paddle.js - for payments */}
-        <script src="https://cdn.paddle.com/paddle/v2/paddle.js" async />
-      </head>
+      <head />
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );

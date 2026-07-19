@@ -104,72 +104,40 @@ export default function Home() {
   const handleCheckout = async (product: ProductTier) => {
     setCheckoutLoading(true);
     try {
-      // Paddle 价格 ID
       const priceId = product.id === 'premium'
         ? (process.env.NEXT_PUBLIC_PADDLE_PRICE_PREMIUM || 'pri_01kxw4xdp2qregv0yfchtzhna4')
         : (process.env.NEXT_PUBLIC_PADDLE_PRICE_FULL || 'pri_01kxw47jdxsbb9z2w6stsnxg3q');
 
-      const clientToken = process.env.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN || '';
-      const paddleEnv = process.env.NEXT_PUBLIC_PADDLE_ENV || 'sandbox';
+      const birthData = {
+        year: Number(form.year), month: Number(form.month), day: Number(form.day),
+        hour: Number(form.hour || 12), minute: Number(form.minute || 0),
+        country: form.country, city: form.city,
+      };
 
-      console.log('[Paddle] Initializing with:', { paddleEnv, hasToken: !!clientToken, priceId });
-
-      // @ts-ignore
-      if (typeof window.Paddle === 'undefined') {
-        alert('Paddle.js 还没加载，请刷新页面。');
-        setCheckoutLoading(false);
-        return;
-      }
-
-      if (!clientToken) {
-        alert('Paddle 客户端 token 还没配置。\n\n请在 Vercel 环境变量里设置 NEXT_PUBLIC_PADDLE_CLIENT_TOKEN。\n\n获取方式：登录 Paddle → Developer tools → Authentication → Create token');
-        setCheckoutLoading(false);
-        return;
-      }
-
-      // @ts-ignore
-      window.Paddle.Environment.set(paddleEnv);
-      // @ts-ignore
-      window.Paddle.Initialize({
-        token: clientToken,
-        eventCallback: function (data: any) {
-          console.log('[Paddle event]', data.name, data);
-          if (data.name === 'checkout.completed') {
-            window.location.href = `/success?provider=paddle&transaction_id=${data.data?.transaction_id || ''}`;
-          }
-        },
-      });
-
-      // 存储表单数据到 sessionStorage
-      sessionStorage.setItem('pendingOrder', JSON.stringify({
-        tier: product.id,
-        birthData: {
-          year: Number(form.year), month: Number(form.month), day: Number(form.day),
-          hour: Number(form.hour || 12), minute: Number(form.minute || 0),
-          country: form.country, city: form.city,
-        },
-        customerEmail: email,
-      }));
-
-      // 打开 Paddle 结账
-      // @ts-ignore
-      window.Paddle.Checkout.open({
-        items: [{ priceId: priceId, quantity: 1 }],
-        customer: { email: email },
-        customData: {
+      // 服务端生成 Paddle 结账链接
+      const res = await fetch('/api/paddle/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          priceId,
+          email,
           tier: product.id,
-          birthData: {
-            year: Number(form.year), month: Number(form.month), day: Number(form.day),
-            hour: Number(form.hour || 12), minute: Number(form.minute || 0),
-            country: form.country, city: form.city,
-          },
-          customerEmail: email,
-        },
+          birthData,
+        }),
       });
+
+      const data = await res.json();
+
+      if (data.error) {
+        alert('支付创建失败: ' + data.error);
+        setCheckoutLoading(false);
+        return;
+      }
+
+      // 跳转到 Paddle 结账页
+      window.location.href = data.url;
     } catch (err: any) {
-      console.error('[Paddle checkout error]', err);
-      alert('Paddle 错误: ' + (err?.message || err?.toString() || '未知错误'));
-    } finally {
+      alert('支付错误: ' + (err?.message || '请重试'));
       setCheckoutLoading(false);
     }
   };
