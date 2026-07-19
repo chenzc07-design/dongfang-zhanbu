@@ -107,7 +107,7 @@ export default function Home() {
       // Paddle 价格 ID
       const priceId = product.id === 'premium'
         ? (process.env.NEXT_PUBLIC_PADDLE_PRICE_PREMIUM || 'pri_01kxw4xdp2qregv0yfchtzhna4')
-        : (process.env.NEXT_PUBLIC_PADDLE_PRICE_FULL || 'pri_01kxw47jdxsbb9zZw6stsnxg3q');
+        : (process.env.NEXT_PUBLIC_PADDLE_PRICE_FULL || 'pri_01kxw47jdxsbb9z2w6stsnxg3q');
 
       const clientToken = process.env.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN || '';
       const paddleEnv = process.env.NEXT_PUBLIC_PADDLE_ENV || 'sandbox';
