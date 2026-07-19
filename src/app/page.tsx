@@ -104,25 +104,63 @@ export default function Home() {
   const handleCheckout = async (product: ProductTier) => {
     setCheckoutLoading(true);
     try {
-      const res = await fetch('/api/paypal/create', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
+      // Paddle 价格 ID
+      const priceId = product.id === 'premium'
+        ? (process.env.NEXT_PUBLIC_PADDLE_PRICE_PREMIUM || 'pri_01kxw4xdp2qregv0yfchtzhna4')
+        : (process.env.NEXT_PUBLIC_PADDLE_PRICE_FULL || 'pri_01kxw47jdxsbb9zZw6stsnxg3q');
+
+      // 初始化 Paddle
+      const paddleEnv = process.env.NEXT_PUBLIC_PADDLE_ENV || 'sandbox';
+      // @ts-ignore
+      if (typeof window.Paddle !== 'undefined') {
+        // @ts-ignore
+        window.Paddle.Environment.set(paddleEnv);
+        // @ts-ignore
+        window.Paddle.Initialize({
+          token: process.env.NEXT_PUBLIC_PADDLE_CLIENT_TOKEN || '',
+          eventCallback: function (data: any) {
+            // Paddle 支付完成事件
+            if (data.name === 'checkout.completed') {
+              window.location.href = `/success?provider=paddle&transaction_id=${data.data?.transaction_id || ''}`;
+            }
+          },
+        });
+
+        // 存储表单数据到 sessionStorage（webhook 处理时使用）
+        sessionStorage.setItem('pendingOrder', JSON.stringify({
           tier: product.id,
-          customerEmail: email,
           birthData: {
             year: Number(form.year), month: Number(form.month), day: Number(form.day),
             hour: Number(form.hour || 12), minute: Number(form.minute || 0),
             country: form.country, city: form.city,
           },
-        }),
-      });
-      const data = await res.json();
-      if (data.approveUrl) {
-        // 跳转到 PayPal 支付页面
-        window.location.href = data.approveUrl;
+          customerEmail: email,
+        }));
+
+        // 打开 Paddle 结账
+        // @ts-ignore
+        window.Paddle.Checkout.open({
+          items: [
+            {
+              priceId: priceId,
+              quantity: 1,
+            },
+          ],
+          customer: {
+            email: email,
+          },
+          customData: {
+            tier: product.id,
+            birthData: {
+              year: Number(form.year), month: Number(form.month), day: Number(form.day),
+              hour: Number(form.hour || 12), minute: Number(form.minute || 0),
+              country: form.country, city: form.city,
+            },
+            customerEmail: email,
+          },
+        });
       } else {
-        alert('Checkout failed. Please try again later.');
+        alert('Paddle not loaded. Please refresh the page.');
       }
     } catch (err) {
       alert('Checkout unavailable. Please try again.');
