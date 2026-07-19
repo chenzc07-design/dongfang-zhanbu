@@ -7,6 +7,7 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import HeroSection from '@/components/home/HeroSection';
 import HowItWorks from '@/components/home/HowItWorks';
+import VideoSection from '@/components/home/VideoSection';
 import ResultsPanel from '@/components/home/ResultsPanel';
 import PricingSection from '@/components/home/PricingSection';
 import AboutMaster from '@/components/home/AboutMaster';
@@ -118,7 +119,10 @@ export default function Home() {
           {/* 2. How It Works */}
           <HowItWorks />
 
-          {/* 3. Results (conditional) */}
+          {/* 3. Video Section */}
+          <VideoSection />
+
+          {/* 4. Results (conditional) */}
           {(step === 'result' || step === 'pricing') && result && (
             <ResultsPanel
               result={result}
