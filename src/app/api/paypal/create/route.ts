@@ -89,6 +89,12 @@ export async function POST(req: NextRequest) {
             amount: {
               currency_code: 'USD',
               value: product.price.toFixed(2),
+              breakdown: {
+                item_total: {
+                  currency_code: 'USD',
+                  value: product.price.toFixed(2),
+                },
+              },
             },
             items: [
               {
