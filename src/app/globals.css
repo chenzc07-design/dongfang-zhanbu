@@ -1,23 +1,24 @@
 @import "tailwindcss";
 
-/* ========== 东方古老占卜 · 奢华暗色主题 v2 ========== */
+/* ========== 东方古老占卜 · 温暖东方主题 v3 ========== */
+/* 参考：AstroBazi（宋画仙鹤、暖白底）、DAO Essentia（现代卡片）、Astro-Charts（极简留白） */
 
 @theme inline {
-  --color-bg-deep: #06080d;
-  --color-bg-primary: #0a0d18;
-  --color-bg-card: rgba(15, 12, 30, 0.7);
-  --color-bg-card-hover: rgba(22, 18, 42, 0.82);
-  --color-gold: #c9a84c;
-  --color-gold-light: #e8cc7a;
-  --color-gold-dark: #a67c35;
-  --color-purple-accent: #7c5cbf;
-  --color-purple-glow: rgba(124, 92, 191, 0.12);
-  --color-purple-glow-strong: rgba(124, 92, 191, 0.2);
-  --color-ink: #ede4d8;
-  --color-ink-dim: #9b8e7c;
-  --color-ink-muted: #5e5044;
-  --color-border-card: rgba(201, 168, 76, 0.1);
-  --color-border-card-hover: rgba(201, 168, 76, 0.25);
+  --color-bg-page: #faf8f4;
+  --color-bg-card: #ffffff;
+  --color-bg-card-alt: #f7f3ec;
+  --color-bg-hero: #f5f0e8;
+  --color-gold: #b8860b;
+  --color-gold-light: #d4a843;
+  --color-gold-dark: #8b6914;
+  --color-accent-red: #9b2d30;
+  --color-accent-red-light: #c0392b;
+  --color-text-primary: #2c2416;
+  --color-text-secondary: #6b5e4a;
+  --color-text-muted: #9b8e7c;
+  --color-border-card: rgba(184, 134, 11, 0.12);
+  --color-border-card-hover: rgba(184, 134, 11, 0.25);
+  --color-shadow-card: rgba(44, 36, 22, 0.06);
   --font-serif: 'Georgia', 'Times New Roman', serif;
 }
 
@@ -25,20 +26,20 @@
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(201, 168, 76, 0.25) transparent;
+  scrollbar-color: rgba(184, 134, 11, 0.3) transparent;
 }
 
 body {
-  background: #06080d;
-  color: #ede4d8;
+  background: #faf8f4;
+  color: #2c2416;
   font-family: var(--font-geist-sans), system-ui, -apple-system, 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ========== 星空背景 v2 ========== */
+/* ========== 微妙背景纹理（替代恐怖星空） ========== */
 
-.starry-bg {
+.subtle-bg {
   position: fixed;
   inset: 0;
   z-index: 0;
@@ -46,137 +47,93 @@ body {
   overflow: hidden;
 }
 
-.starry-bg::before {
+.subtle-bg::before {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    /* Row 1 */
-    radial-gradient(1.5px 1.5px at 5% 8%, rgba(255,255,255,0.5), transparent),
-    radial-gradient(1px 1px at 18% 12%, rgba(255,255,255,0.3), transparent),
-    radial-gradient(1px 1px at 32% 5%, rgba(255,255,255,0.4), transparent),
-    radial-gradient(2px 2px at 48% 15%, rgba(255,255,255,0.25), transparent),
-    radial-gradient(1px 1px at 62% 8%, rgba(255,255,255,0.35), transparent),
-    radial-gradient(1.5px 1.5px at 78% 18%, rgba(255,255,255,0.3), transparent),
-    radial-gradient(1px 1px at 91% 10%, rgba(255,255,255,0.4), transparent),
-    /* Row 2 */
-    radial-gradient(1px 1px at 12% 28%, rgba(255,255,255,0.35), transparent),
-    radial-gradient(2px 2px at 25% 22%, rgba(255,255,255,0.2), transparent),
-    radial-gradient(1px 1px at 42% 35%, rgba(255,255,255,0.3), transparent),
-    radial-gradient(1.5px 1.5px at 58% 25%, rgba(255,255,255,0.4), transparent),
-    radial-gradient(1px 1px at 72% 30%, rgba(255,255,255,0.25), transparent),
-    radial-gradient(1px 1px at 88% 38%, rgba(255,255,255,0.35), transparent),
-    /* Row 3 */
-    radial-gradient(1px 1px at 8% 48%, rgba(255,255,255,0.3), transparent),
-    radial-gradient(1.5px 1.5px at 22% 52%, rgba(255,255,255,0.4), transparent),
-    radial-gradient(1px 1px at 38% 45%, rgba(255,255,255,0.25), transparent),
-    radial-gradient(2px 2px at 55% 50%, rgba(255,255,255,0.3), transparent),
-    radial-gradient(1px 1px at 68% 42%, rgba(255,255,255,0.35), transparent),
-    radial-gradient(1px 1px at 82% 55%, rgba(255,255,255,0.3), transparent),
-    radial-gradient(1.5px 1.5px at 95% 48%, rgba(255,255,255,0.25), transparent),
-    /* Row 4 */
-    radial-gradient(1px 1px at 15% 68%, rgba(255,255,255,0.35), transparent),
-    radial-gradient(1px 1px at 28% 72%, rgba(255,255,255,0.25), transparent),
-    radial-gradient(2px 2px at 44% 65%, rgba(255,255,255,0.3), transparent),
-    radial-gradient(1px 1px at 60% 75%, rgba(255,255,255,0.4), transparent),
-    radial-gradient(1.5px 1.5px at 75% 68%, rgba(255,255,255,0.25), transparent),
-    radial-gradient(1px 1px at 90% 72%, rgba(255,255,255,0.3), transparent),
-    /* Row 5 */
-    radial-gradient(1px 1px at 6% 88%, rgba(255,255,255,0.3), transparent),
-    radial-gradient(1.5px 1.5px at 20% 92%, rgba(255,255,255,0.25), transparent),
-    radial-gradient(1px 1px at 35% 85%, rgba(255,255,255,0.35), transparent),
-    radial-gradient(1px 1px at 50% 90%, rgba(255,255,255,0.3), transparent),
-    radial-gradient(2px 2px at 65% 88%, rgba(255,255,255,0.2), transparent),
-    radial-gradient(1px 1px at 80% 92%, rgba(255,255,255,0.35), transparent),
-    radial-gradient(1.5px 1.5px at 94% 85%, rgba(255,255,255,0.25), transparent);
+    /* 极淡的暖色渐变 - 模拟宣纸质感 */
+    radial-gradient(ellipse 100% 60% at 50% 0%, rgba(184, 134, 11, 0.04), transparent 60%),
+    radial-gradient(ellipse 60% 40% at 20% 80%, rgba(155, 45, 48, 0.02), transparent 50%);
 }
 
-.starry-bg::after {
+.subtle-bg::after {
   content: '';
   position: absolute;
   inset: 0;
+  opacity: 0.03;
+  background-image:
+    radial-gradient(circle at 15% 25%, #b8860b 0.5px, transparent 0.5px),
+    radial-gradient(circle at 35% 60%, #b8860b 0.5px, transparent 0.5px),
+    radial-gradient(circle at 55% 15%, #b8860b 0.5px, transparent 0.5px),
+    radial-gradient(circle at 75% 45%, #b8860b 0.5px, transparent 0.5px),
+    radial-gradient(circle at 85% 75%, #b8860b 0.5px, transparent 0.5px),
+    radial-gradient(circle at 10% 80%, #b8860b 0.5px, transparent 0.5px),
+    radial-gradient(circle at 65% 85%, #b8860b 0.5px, transparent 0.5px),
+    radial-gradient(circle at 40% 40%, #b8860b 0.5px, transparent 0.5px);
+  background-size: 200px 200px;
+}
+
+/* ========== Hero 区域（暖色渐变） ========== */
+
+.hero-warm {
   background:
-    /* Purple cosmic glow from top */
-    radial-gradient(ellipse 120% 60% at 50% -10%, rgba(124, 92, 191, 0.07), transparent 60%),
-    /* Subtle gold glow from bottom-right */
-    radial-gradient(ellipse 50% 40% at 85% 90%, rgba(201, 168, 76, 0.03), transparent),
-    /* Subtle purple at bottom-left */
-    radial-gradient(ellipse 40% 30% at 15% 85%, rgba(124, 92, 191, 0.04), transparent);
+    radial-gradient(ellipse 120% 70% at 50% -10%, rgba(212, 168, 67, 0.08), transparent 55%),
+    radial-gradient(ellipse 80% 50% at 50% 100%, rgba(184, 134, 11, 0.04), transparent 55%),
+    linear-gradient(180deg, #f5f0e8 0%, #faf8f4 100%);
 }
 
-/* ========== Hero 渐变背景 ========== */
+/* ========== 卡片样式（白色 + 微阴影 + 细边框） ========== */
 
-.hero-gradient {
-  background:
-    radial-gradient(ellipse 150% 80% at 50% -20%, rgba(124, 92, 191, 0.1) 0%, transparent 55%),
-    radial-gradient(ellipse 80% 50% at 50% 120%, rgba(201, 168, 76, 0.04) 0%, transparent 55%),
-    #06080d;
+.card-warm {
+  background: #ffffff;
+  border: 1px solid rgba(184, 134, 11, 0.1);
+  border-radius: 1rem;
+  box-shadow: 0 2px 12px rgba(44, 36, 22, 0.04), 0 1px 3px rgba(44, 36, 22, 0.03);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* ========== 玻璃态卡片 v2 ========== */
-
-.glass-card {
-  background: rgba(15, 12, 30, 0.7);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(201, 168, 76, 0.1);
-  box-shadow:
-    0 4px 24px rgba(0, 0, 0, 0.4),
-    inset 0 1px 0 rgba(255, 255, 255, 0.02);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.glass-card:hover {
-  background: rgba(18, 15, 38, 0.8);
-  border-color: rgba(201, 168, 76, 0.22);
-  box-shadow:
-    0 8px 40px rgba(0, 0, 0, 0.5),
-    0 0 40px rgba(201, 168, 76, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+.card-warm:hover {
+  border-color: rgba(184, 134, 11, 0.2);
+  box-shadow: 0 4px 20px rgba(44, 36, 22, 0.06), 0 2px 6px rgba(44, 36, 22, 0.04);
   transform: translateY(-2px);
 }
 
-.glass-card-glow {
-  box-shadow:
-    0 4px 24px rgba(0, 0, 0, 0.4),
-    0 0 50px rgba(201, 168, 76, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.02);
+.card-warm-glow {
+  box-shadow: 0 2px 16px rgba(44, 36, 22, 0.05), 0 0 0 1px rgba(184, 134, 11, 0.15);
 }
 
-.glass-card-glow:hover {
-  box-shadow:
-    0 8px 40px rgba(0, 0, 0, 0.5),
-    0 0 80px rgba(201, 168, 76, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.03);
+.card-warm-glow:hover {
+  box-shadow: 0 6px 30px rgba(184, 134, 11, 0.1), 0 0 0 1px rgba(184, 134, 11, 0.3);
 }
 
-/* ========== 金色装饰线 ========== */
+/* ========== 金色分割线 ========== */
 
 .gold-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.4), transparent);
+  background: linear-gradient(90deg, transparent, rgba(184, 134, 11, 0.25), transparent);
   margin: 2rem 0;
 }
 
 /* ========== 按钮 ========== */
 
 .btn-gold {
-  background: linear-gradient(135deg, #c9a84c, #a67c35, #c9a84c);
+  background: linear-gradient(135deg, #d4a843, #b8860b);
   background-size: 200% 200%;
-  color: #06080d;
+  color: #ffffff;
   font-weight: 600;
   border: none;
   border-radius: 0.75rem;
   padding: 0.75rem 1.5rem;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  animation: goldShimmer 4s ease-in-out infinite;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   letter-spacing: 0.01em;
+  box-shadow: 0 2px 8px rgba(184, 134, 11, 0.2);
 }
 
 .btn-gold:hover {
   background-position: right center;
-  box-shadow: 0 4px 30px rgba(201, 168, 76, 0.45);
+  box-shadow: 0 4px 20px rgba(184, 134, 11, 0.35);
   transform: translateY(-2px);
 }
 
@@ -184,7 +141,6 @@ body {
   opacity: 0.5;
   cursor: not-allowed;
   transform: none;
-  animation: none;
 }
 
 .btn-gold:active {
@@ -192,28 +148,28 @@ body {
 }
 
 .btn-ghost {
-  background: rgba(201, 168, 76, 0.06);
-  color: #c9a84c;
-  border: 1px solid rgba(201, 168, 76, 0.2);
+  background: rgba(184, 134, 11, 0.04);
+  color: #8b6914;
+  border: 1px solid rgba(184, 134, 11, 0.2);
   border-radius: 0.75rem;
   padding: 0.75rem 1.5rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-ghost:hover {
-  background: rgba(201, 168, 76, 0.12);
-  border-color: rgba(201, 168, 76, 0.35);
+  background: rgba(184, 134, 11, 0.08);
+  border-color: rgba(184, 134, 11, 0.35);
   transform: translateY(-1px);
 }
 
-/* ========== 输入框 v2 ========== */
+/* ========== 输入框 ========== */
 
 .input-mystic {
-  background: rgba(10, 8, 22, 0.6);
-  border: 1px solid rgba(201, 168, 76, 0.12);
-  color: #ede4d8;
+  background: #faf8f4;
+  border: 1px solid rgba(184, 134, 11, 0.15);
+  color: #2c2416;
   border-radius: 0.75rem;
   padding: 0.75rem 1rem;
   outline: none;
@@ -223,13 +179,13 @@ body {
 }
 
 .input-mystic:focus {
-  border-color: rgba(201, 168, 76, 0.5);
-  box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.06), 0 0 20px rgba(201, 168, 76, 0.05);
-  background: rgba(14, 11, 30, 0.8);
+  border-color: rgba(184, 134, 11, 0.5);
+  box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.06);
+  background: #ffffff;
 }
 
 .input-mystic::placeholder {
-  color: rgba(155, 142, 124, 0.5);
+  color: rgba(107, 94, 74, 0.4);
 }
 
 select.input-mystic {
@@ -238,21 +194,11 @@ select.input-mystic {
 }
 
 select.input-mystic option {
-  background: #0a0d18;
-  color: #ede4d8;
+  background: #ffffff;
+  color: #2c2416;
 }
 
 /* ========== 动画 ========== */
-
-@keyframes goldShimmer {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
 
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }
@@ -264,25 +210,6 @@ select.input-mystic option {
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes pulseGlow {
-  0%, 100% { opacity: 0.5; }
-  50% { opacity: 1; }
-}
-
-@keyframes twinkle {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.8; }
-}
-
-@keyframes cardFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
-}
-
-.animate-float {
-  animation: float 4s ease-in-out infinite;
-}
-
 .animate-fade-in-up {
   animation: fadeInUp 0.6s ease-out forwards;
 }
@@ -291,16 +218,11 @@ select.input-mystic option {
   animation: fadeSlideUp 0.7s ease-out forwards;
 }
 
-.animate-pulse-glow {
-  animation: pulseGlow 2s ease-in-out infinite;
-}
-
-/* Stagger children animations */
+/* Stagger children */
 .stagger-animate > * {
   opacity: 0;
   animation: fadeInUp 0.5s ease-out forwards;
 }
-
 .stagger-animate > *:nth-child(1) { animation-delay: 0.05s; }
 .stagger-animate > *:nth-child(2) { animation-delay: 0.1s; }
 .stagger-animate > *:nth-child(3) { animation-delay: 0.15s; }
@@ -308,38 +230,26 @@ select.input-mystic option {
 .stagger-animate > *:nth-child(5) { animation-delay: 0.25s; }
 .stagger-animate > *:nth-child(6) { animation-delay: 0.3s; }
 
-/* ========== 元素颜色徽标 ========== */
+/* ========== 元素徽标 ========== */
 
-.badge-wood { background: rgba(76, 175, 80, 0.12); color: #66bb6a; border: 1px solid rgba(76, 175, 80, 0.2); }
-.badge-fire { background: rgba(244, 67, 54, 0.12); color: #ef5350; border: 1px solid rgba(244, 67, 54, 0.2); }
-.badge-earth { background: rgba(255, 152, 0, 0.12); color: #ffa726; border: 1px solid rgba(255, 152, 0, 0.2); }
-.badge-metal { background: rgba(158, 158, 158, 0.12); color: #bdbdbd; border: 1px solid rgba(158, 158, 158, 0.2); }
-.badge-water { background: rgba(33, 150, 243, 0.12); color: #42a5f5; border: 1px solid rgba(33, 150, 243, 0.2); }
+.badge-wood { background: rgba(76, 175, 80, 0.1); color: #388e3c; border: 1px solid rgba(76, 175, 80, 0.2); }
+.badge-fire { background: rgba(244, 67, 54, 0.1); color: #d32f2f; border: 1px solid rgba(244, 67, 54, 0.2); }
+.badge-earth { background: rgba(255, 152, 0, 0.1); color: #e65100; border: 1px solid rgba(255, 152, 0, 0.2); }
+.badge-metal { background: rgba(120, 120, 120, 0.1); color: #616161; border: 1px solid rgba(120, 120, 120, 0.2); }
+.badge-water { background: rgba(33, 150, 243, 0.1); color: #1976d2; border: 1px solid rgba(33, 150, 243, 0.2); }
 
-/* ========== 文本渐变 ========== */
-
-.text-gradient-gold {
-  background: linear-gradient(135deg, #e8cc7a, #c9a84c, #a67c35);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* ========== 华丽边框（大师照片用） ========== */
+/* ========== 华丽边框 ========== */
 
 .ornate-frame {
-  border: 2px solid rgba(201, 168, 76, 0.25);
-  box-shadow:
-    0 0 40px rgba(201, 168, 76, 0.1),
-    0 0 80px rgba(124, 92, 191, 0.06),
-    inset 0 0 20px rgba(201, 168, 76, 0.03);
+  border: 2px solid rgba(184, 134, 11, 0.2);
+  box-shadow: 0 4px 24px rgba(184, 134, 11, 0.06);
 }
 
 /* ========== 选中状态 ========== */
 
 ::selection {
-  background: rgba(201, 168, 76, 0.3);
-  color: #ede4d8;
+  background: rgba(184, 134, 11, 0.2);
+  color: #2c2416;
 }
 
 /* ========== 滚动条 ========== */
@@ -347,7 +257,7 @@ select.input-mystic option {
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: rgba(201, 168, 76, 0.2);
+  background: rgba(184, 134, 11, 0.2);
   border-radius: 3px;
 }
-::-webkit-scrollbar-thumb:hover { background: rgba(201, 168, 76, 0.35); }
+::-webkit-scrollbar-thumb:hover { background: rgba(184, 134, 11, 0.35); }

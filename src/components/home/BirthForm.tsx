@@ -1,13 +1,7 @@
 'use client';
 
 interface BirthFormData {
-  year: string;
-  month: string;
-  day: string;
-  hour: string;
-  minute: string;
-  country: string;
-  city: string;
+  year: string; month: string; day: string; hour: string; minute: string; country: string; city: string;
 }
 
 interface BirthFormProps {
@@ -37,14 +31,12 @@ export default function BirthForm({ form, onChange, onSubmit, loading }: BirthFo
   const months = Array.from({ length: 12 }, (_, i) => i + 1);
   const days = Array.from({ length: 31 }, (_, i) => i + 1);
   const minutes = [0, 15, 30, 45];
-
   const isValid = form.year && form.month && form.day;
 
   return (
     <form onSubmit={onSubmit} className="space-y-5">
-      {/* 出生日期 */}
       <div>
-        <p className="text-xs text-[#c9a84c] tracking-[0.2em] uppercase mb-3 font-medium">Birth Date · 出生日期</p>
+        <p className="text-xs text-[#b8860b] tracking-[0.2em] uppercase mb-3 font-medium">Birth Date · 出生日期</p>
         <div className="grid grid-cols-3 gap-3">
           {[
             { name: 'year', label: 'Year 年', options: years.map(y => ({ v: y, l: String(y) })) },
@@ -52,16 +44,12 @@ export default function BirthForm({ form, onChange, onSubmit, loading }: BirthFo
             { name: 'day', label: 'Day 日', options: days.map(d => ({ v: d, l: String(d).padStart(2, '0') })) },
           ].map(f => (
             <div key={f.name}>
-              <label className="block text-[10px] text-[#7e7264] mb-1.5 tracking-wider">{f.label}</label>
-              <select
-                name={f.name}
-                value={form[f.name as keyof BirthFormData]}
-                onChange={onChange}
-                className="input-mystic text-sm py-3"
-              >
+              <label className="block text-[10px] text-[#9b8e7c] mb-1.5 tracking-wider">{f.label}</label>
+              <select name={f.name} value={form[f.name as keyof BirthFormData]} onChange={onChange}
+                className="input-mystic text-sm py-3">
                 <option value="">—</option>
                 {f.options.map(o => (
-                  <option key={o.v} value={o.v} className="bg-[#0a0d18]">{o.l}</option>
+                  <option key={o.v} value={o.v} className="bg-white">{o.l}</option>
                 ))}
               </select>
             </div>
@@ -69,77 +57,51 @@ export default function BirthForm({ form, onChange, onSubmit, loading }: BirthFo
         </div>
       </div>
 
-      {/* 出生时间 */}
       <div>
-        <p className="text-xs text-[#c9a84c] tracking-[0.2em] uppercase mb-3 font-medium">Birth Time · 出生时辰</p>
+        <p className="text-xs text-[#b8860b] tracking-[0.2em] uppercase mb-3 font-medium">Birth Time · 出生时辰</p>
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <label className="block text-[10px] text-[#7e7264] mb-1.5 tracking-wider">Shi Chen 时辰</label>
-            <select
-              name="hour"
-              value={form.hour}
-              onChange={onChange}
-              className="input-mystic text-sm py-3"
-            >
+            <label className="block text-[10px] text-[#9b8e7c] mb-1.5 tracking-wider">Shi Chen 时辰</label>
+            <select name="hour" value={form.hour} onChange={onChange} className="input-mystic text-sm py-3">
               <option value="">Unknown</option>
               {SHI_CHEN.map(sc => (
-                <option key={sc.value} value={sc.value} className="bg-[#0a0d18]">{sc.short}</option>
+                <option key={sc.value} value={sc.value} className="bg-white">{sc.short}</option>
               ))}
             </select>
           </div>
           <div>
-            <label className="block text-[10px] text-[#7e7264] mb-1.5 tracking-wider">Minute 分</label>
-            <select
-              name="minute"
-              value={form.minute}
-              onChange={onChange}
-              className="input-mystic text-sm py-3"
-            >
+            <label className="block text-[10px] text-[#9b8e7c] mb-1.5 tracking-wider">Minute 分</label>
+            <select name="minute" value={form.minute} onChange={onChange} className="input-mystic text-sm py-3">
               <option value="">00</option>
               {minutes.map(m => (
-                <option key={m} value={m} className="bg-[#0a0d18]">{String(m).padStart(2, '0')}</option>
+                <option key={m} value={m} className="bg-white">{String(m).padStart(2, '0')}</option>
               ))}
             </select>
           </div>
         </div>
       </div>
 
-      {/* 出生地点 */}
       <div>
-        <p className="text-xs text-[#c9a84c] tracking-[0.2em] uppercase mb-3 font-medium">Birth Place · 出生地点</p>
+        <p className="text-xs text-[#b8860b] tracking-[0.2em] uppercase mb-3 font-medium">Birth Place · 出生地点</p>
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <label className="block text-[10px] text-[#7e7264] mb-1.5 tracking-wider">Country 国家</label>
-            <input
-              name="country"
-              value={form.country}
-              onChange={onChange}
-              placeholder="e.g. United States"
-              className="input-mystic text-sm"
-            />
+            <label className="block text-[10px] text-[#9b8e7c] mb-1.5 tracking-wider">Country 国家</label>
+            <input name="country" value={form.country} onChange={onChange}
+              placeholder="e.g. United States" className="input-mystic text-sm" />
           </div>
           <div>
-            <label className="block text-[10px] text-[#7e7264] mb-1.5 tracking-wider">City 城市</label>
-            <input
-              name="city"
-              value={form.city}
-              onChange={onChange}
-              placeholder="e.g. New York"
-              className="input-mystic text-sm"
-            />
+            <label className="block text-[10px] text-[#9b8e7c] mb-1.5 tracking-wider">City 城市</label>
+            <input name="city" value={form.city} onChange={onChange}
+              placeholder="e.g. New York" className="input-mystic text-sm" />
           </div>
         </div>
       </div>
 
-      {/* Submit */}
-      <button
-        type="submit"
-        disabled={loading || !isValid}
-        className="btn-gold w-full text-base py-4 rounded-xl font-semibold tracking-wide"
-      >
+      <button type="submit" disabled={loading || !isValid}
+        className="btn-gold w-full text-base py-4 rounded-xl font-semibold tracking-wide">
         {loading ? (
           <span className="flex items-center justify-center gap-2">
-            <span className="w-5 h-5 border-2 border-[#06080d] border-t-transparent rounded-full animate-spin" />
+            <span className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
             Reading the stars...
           </span>
         ) : (

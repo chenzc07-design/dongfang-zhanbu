@@ -99,9 +99,9 @@ export default function Home() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#06080d] text-[#ede4d8] overflow-hidden">
-      {/* 星空背景 */}
-      <div className="starry-bg" />
+    <div className="relative min-h-screen bg-[#faf8f4] text-[#2c2416] overflow-hidden">
+      {/* 宣纸质感背景 */}
+      <div className="subtle-bg" />
 
       <div className="relative z-10">
         <Header />

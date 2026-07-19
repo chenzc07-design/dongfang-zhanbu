@@ -20,7 +20,7 @@ const TESTIMONIALS = [
 
 export default function Testimonials() {
   return (
-    <section className="py-20 md:py-24 border-t border-[rgba(201,168,76,0.05)]">
+    <section className="py-20 md:py-24 bg-[#f7f3ec]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <SectionHeading
           label="Testimonials"
@@ -28,17 +28,14 @@ export default function Testimonials() {
           subtitle="Real experiences from people who discovered their destiny"
           className="mb-12"
         />
-
         <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {TESTIMONIALS.map((t, i) => (
-            <div key={i} className="glass-card rounded-2xl p-6">
-              <div className="text-[#c9a84c] text-3xl font-serif mb-4 opacity-50">&ldquo;</div>
-              <p className="text-sm text-[#9b8e7c] leading-relaxed mb-5 italic">
-                {t.quote}
-              </p>
-              <div className="border-t border-[rgba(201,168,76,0.08)] pt-4">
-                <p className="text-[#ede4d8] text-sm font-semibold">{t.name}</p>
-                <p className="text-[#7e7264] text-xs">{t.location}</p>
+            <div key={i} className="card-warm rounded-2xl p-6">
+              <div className="text-[#b8860b] text-3xl font-serif mb-4 opacity-40">&ldquo;</div>
+              <p className="text-sm text-[#6b5e4a] leading-relaxed mb-5 italic">{t.quote}</p>
+              <div className="border-t border-[rgba(184,134,11,0.08)] pt-4">
+                <p className="text-[#2c2416] text-sm font-semibold">{t.name}</p>
+                <p className="text-[#9b8e7c] text-xs">{t.location}</p>
               </div>
             </div>
           ))}
