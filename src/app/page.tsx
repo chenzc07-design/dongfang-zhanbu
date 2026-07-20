@@ -34,25 +34,33 @@ export default function Home() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!form.year || !form.month || !form.day) return;
+    console.log('[Submit] clicked', { form });
+    if (!form.year || !form.month || !form.day) {
+      console.log('[Submit] missing date fields');
+      return;
+    }
     setLoading(true);
     try {
+      const payload = {
+        year: Number(form.year), month: Number(form.month), day: Number(form.day),
+        hour: Number(form.hour || 12), minute: Number(form.minute || 0),
+        country: form.country || 'Unknown', city: form.city || 'Unknown',
+      };
+      console.log('[Submit] sending payload', payload);
       const res = await fetch('/api/calculate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          year: Number(form.year), month: Number(form.month), day: Number(form.day),
-          hour: Number(form.hour || 12), minute: Number(form.minute || 0),
-          country: form.country || 'Unknown', city: form.city || 'Unknown',
-        }),
+        body: JSON.stringify(payload),
       });
+      console.log('[Submit] response status', res.status);
       const data = await res.json();
+      console.log('[Submit] response data', data);
       if (data.success) {
         setResult(data.data);
         setStep('result');
       }
     } catch (err) {
-      console.error(err);
+      console.error('[Submit] error', err);
     } finally {
       setLoading(false);
     }
