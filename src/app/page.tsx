@@ -70,31 +70,36 @@ export default function Home() {
   const handleCheckout = async (product: ProductTier) => {
     setCheckoutLoading(true);
     try {
-      const priceId = product.id === 'premium'
-        ? (process.env.NEXT_PUBLIC_PADDLE_PRICE_PREMIUM || 'pri_01kxw4xdp2qregv0yfchtzhna4')
-        : (process.env.NEXT_PUBLIC_PADDLE_PRICE_FULL || 'pri_01kxw47jdxsbb9z2w6stsnxg3q');
-
       const birthData = {
         year: Number(form.year), month: Number(form.month), day: Number(form.day),
         hour: Number(form.hour || 12), minute: Number(form.minute || 0),
         country: form.country, city: form.city,
       };
 
-      const res = await fetch('/api/paddle/checkout', {
+      // 创建 PayPal 订单
+      const res = await fetch('/api/paypal/create', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ priceId, email, tier: product.id, birthData }),
+        body: JSON.stringify({
+          tier: product.id,
+          customerEmail: email,
+          birthData,
+        }),
       });
 
       const data = await res.json();
       if (data.error) {
-        alert('支付创建失败: ' + data.error);
-      } else if (data.url) {
-        window.location.href = data.url;
+        alert('Payment creation failed: ' + data.error);
+        setCheckoutLoading(false);
+        return;
+      }
+
+      // 跳转到 PayPal 支付页面
+      if (data.approveUrl) {
+        window.location.href = data.approveUrl;
       }
     } catch (err: any) {
-      alert('支付错误: ' + (err?.message || '请重试'));
-    } finally {
+      alert('Payment error: ' + (err?.message || 'Please try again'));
       setCheckoutLoading(false);
     }
   };
