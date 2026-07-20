@@ -4,10 +4,10 @@ import { generateBaZiReport } from './pdf';
 
 const resend = new Resend(process.env.RESEND_API_KEY || 're_placeholder');
 
-const FROM_EMAIL = process.env.EMAIL_FROM || '东方古老占卜 <reports@dongfang.com>';
-const SUPPORT_EMAIL = process.env.EMAIL_SUPPORT || 'support@dongfang.com';
+const FROM_EMAIL = process.env.EMAIL_FROM || '东方古老占卜 <reports@dongfangdivination.com>';
+const SUPPORT_EMAIL = process.env.EMAIL_SUPPORT || 'support@dongfangdivination.com';
 // 老板邮箱 — 收通知、日报、告警
-const OWNER_EMAIL = process.env.OWNER_EMAIL || process.env.EMAIL_SUPPORT || 'support@dongfang.com';
+const OWNER_EMAIL = process.env.OWNER_EMAIL || process.env.EMAIL_SUPPORT || 'support@dongfangdivination.com';
 
 export async function sendBaZiReport(
   toEmail: string,

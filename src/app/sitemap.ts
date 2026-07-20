@@ -2,7 +2,7 @@ import { getAllPosts } from '@/lib/blog';
 import type { MetadataRoute } from 'next';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://bazi-site-theta.vercel.app';
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://dongfangdivination.com';
 
   const posts = getAllPosts().map((post) => ({
     url: `${baseUrl}/blog/${post.slug}`,

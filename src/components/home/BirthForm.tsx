@@ -26,6 +26,16 @@ const SHI_CHEN = [
   { value: '22', label: '亥时 Hai · 21:00-23:00', short: '亥 21-23' },
 ];
 
+const COUNTRIES = [
+  'United States', 'United Kingdom', 'Canada', 'Australia', 'New Zealand',
+  'Ireland', 'Germany', 'France', 'Italy', 'Spain', 'Netherlands', 'Belgium',
+  'Switzerland', 'Austria', 'Sweden', 'Norway', 'Denmark', 'Finland',
+  'Singapore', 'Malaysia', 'India', 'Japan', 'South Korea', 'Thailand',
+  'Vietnam', 'Philippines', 'Indonesia', 'Hong Kong', 'Taiwan',
+  'Brazil', 'Mexico', 'Argentina', 'South Africa', 'Israel',
+  'Other',
+];
+
 export default function BirthForm({ form, onChange, onSubmit, loading }: BirthFormProps) {
   const years = Array.from({ length: 100 }, (_, i) => 2026 - i);
   const months = Array.from({ length: 12 }, (_, i) => i + 1);
@@ -86,8 +96,17 @@ export default function BirthForm({ form, onChange, onSubmit, loading }: BirthFo
         <div className="grid grid-cols-2 gap-3">
           <div>
             <label className="block text-[10px] text-[#9b8e7c] mb-1.5 tracking-wider">Country 国家</label>
-            <input name="country" value={form.country} onChange={onChange}
-              placeholder="e.g. United States" className="input-mystic text-sm" />
+            <select
+              name="country"
+              value={form.country}
+              onChange={onChange}
+              className="input-mystic text-sm py-3"
+            >
+              <option value="">Select your country</option>
+              {COUNTRIES.filter(c => c).map(c => (
+                <option key={c} value={c} className="bg-white">{c}</option>
+              ))}
+            </select>
           </div>
           <div>
             <label className="block text-[10px] text-[#9b8e7c] mb-1.5 tracking-wider">City 城市</label>

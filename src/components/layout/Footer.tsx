@@ -6,7 +6,7 @@ export default function Footer() {
           <div className="flex justify-center gap-6 mb-3">
             <a href="/blog" className="text-[11px] text-[#9b8e7c] hover:text-[#b8860b] transition-colors">Blog</a>
             <span className="text-[#9b8e7c] text-[11px]">·</span>
-            <a href="mailto:support@dongfang.com" className="text-[11px] text-[#9b8e7c] hover:text-[#b8860b] transition-colors">Contact</a>
+            <a href="mailto:support@dongfangdivination.com" className="text-[11px] text-[#9b8e7c] hover:text-[#b8860b] transition-colors">Contact</a>
           </div>
           <p className="text-[11px] text-[#9b8e7c]">
             © {new Date().getFullYear()} 东方古老占卜 · Ancient Eastern Divination
