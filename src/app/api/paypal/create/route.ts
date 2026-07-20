@@ -53,13 +53,13 @@ export async function POST(req: NextRequest) {
     const pricing: Record<string, { name: string; price: number; description: string }> = {
       full: {
         name: 'Complete BaZi Reading',
-        price: 1.00,
-        description: 'TEST MODE — Complete BaZi Reading (normally $14.99)',
+        price: 14.99,
+        description: 'Your full personalized destiny report with Five Elements, personality, career & relationships',
       },
       premium: {
         name: 'Premium BaZi Bundle',
-        price: 1.00,
-        description: 'TEST MODE — Premium BaZi Bundle (normally $34.99)',
+        price: 34.99,
+        description: 'Complete report + 2026 Year of Horse forecast + lucky elements & crystal guide',
       },
     };
 
