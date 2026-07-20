@@ -5,49 +5,54 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Blog — 东方古老占卜 · Ancient Eastern Divination',
   description: 'Discover the ancient wisdom of Chinese BaZi astrology. Articles on destiny, Five Elements, Four Pillars, and life guidance.',
+  openGraph: {
+    title: 'Blog — Ancient Eastern Divination',
+    description: 'Discover the ancient wisdom of Chinese BaZi astrology',
+    type: 'website',
+    images: [
+      {
+        url: 'https://dongfangdivination.com/og-image.png',
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
 };
 
-const categoryColors: Record<string, { bg: string; text: string }> = {
-  'BaZi Basics': { bg: 'rgba(212,168,83,0.15)', text: '#f0d080' },
-  'Five Elements': { bg: 'rgba(100,180,120,0.15)', text: '#7dd89a' },
-  'Fortune & Destiny': { bg: 'rgba(139,26,43,0.2)', text: '#e0707a' },
-  'Career & Wealth': { bg: 'rgba(212,168,83,0.15)', text: '#f0d080' },
-  'Relationships': { bg: 'rgba(180,120,160,0.15)', text: '#d8a0c8' },
-  'General': { bg: 'rgba(120,140,180,0.15)', text: '#a0b8d8' },
+const categoryColors: Record<string, string> = {
+  'BaZi Basics': 'bg-[rgba(184,134,11,0.1)] text-[#b8860b] border-[rgba(184,134,11,0.2)]',
+  'Five Elements': 'bg-[rgba(100,180,120,0.1)] text-[#5a8060] border-[rgba(100,180,120,0.2)]',
+  'Fortune & Destiny': 'bg-[rgba(155,45,48,0.08)] text-[#9b2d30] border-[rgba(155,45,48,0.2)]',
+  'Career & Wealth': 'bg-[rgba(184,134,11,0.1)] text-[#b8860b] border-[rgba(184,134,11,0.2)]',
+  'Relationships': 'bg-[rgba(180,120,160,0.08)] text-[#a0688a] border-[rgba(180,120,160,0.2)]',
+  'General': 'bg-[rgba(120,140,180,0.08)] text-[#6878a0] border-[rgba(120,140,180,0.2)]',
+  'BaZi Astrology': 'bg-[rgba(184,134,11,0.1)] text-[#b8860b] border-[rgba(184,134,11,0.2)]',
+  'Annual Forecast': 'bg-[rgba(155,45,48,0.08)] text-[#9b2d30] border-[rgba(155,45,48,0.2)]',
 };
 
 export default function BlogPage() {
   const posts = getAllPosts();
 
   return (
-    <div className="min-h-screen bg-[#0a0e1a]">
-      {/* Starry background */}
-      <div className="fixed inset-0 z-0 pointer-events-none" style={{
-        background: `
-          radial-gradient(1px 1px at 10% 20%, rgba(212,168,83,0.4), transparent),
-          radial-gradient(1px 1px at 25% 55%, rgba(255,255,255,0.3), transparent),
-          radial-gradient(1.5px 1.5px at 40% 15%, rgba(212,168,83,0.5), transparent),
-          radial-gradient(1px 1px at 60% 70%, rgba(255,255,255,0.25), transparent),
-          radial-gradient(1.5px 1.5px at 75% 35%, rgba(212,168,83,0.35), transparent),
-          radial-gradient(1px 1px at 90% 60%, rgba(255,255,255,0.3), transparent),
-          radial-gradient(2px 2px at 15% 85%, rgba(212,168,83,0.25), transparent),
-          radial-gradient(1px 1px at 50% 45%, rgba(255,255,255,0.35), transparent),
-          radial-gradient(1.5px 1.5px at 85% 10%, rgba(212,168,83,0.4), transparent),
-          radial-gradient(1px 1px at 35% 90%, rgba(255,255,255,0.2), transparent)
-        `
-      }} />
+    <div className="min-h-screen bg-[#faf8f4] text-[#2c2416]">
+      <div className="subtle-bg" />
 
-      <div className="relative z-10 max-w-4xl mx-auto px-4 py-20">
+      <div className="relative z-10 max-w-4xl mx-auto px-4 py-16">
         {/* Header */}
-        <div className="text-center mb-16">
-          <Link href="/" className="inline-block text-[#8a7a6a] hover:text-[#d4a853] text-sm mb-6 transition-colors">
+        <div className="text-center mb-12">
+          <Link href="/" className="inline-block text-[#6b5e4a] hover:text-[#b8860b] text-sm mb-6 transition-colors">
             ← Back to 东方古老占卜
           </Link>
-          <h1 className="text-4xl md:text-5xl font-serif text-[#d4a853] mb-4">
+          <div className="flex items-center justify-center gap-3 mb-3">
+            <div className="w-8 h-px bg-gradient-to-r from-transparent to-[rgba(184,134,11,0.3)]" />
+            <span className="text-[#b8860b] text-xs tracking-[0.3em] uppercase">Wisdom & Insights</span>
+            <div className="w-8 h-px bg-gradient-to-r from-[rgba(184,134,11,0.3)] to-transparent" />
+          </div>
+          <h1 className="text-3xl md:text-4xl font-serif text-[#2c2416] mb-4">
             Ancient Wisdom Blog
           </h1>
-          <p className="text-[#8a7a6a] text-lg max-w-xl mx-auto">
-            Explore the depths of Chinese BaZi astrology — Four Pillars, Five Elements, 
+          <p className="text-[#6b5e4a] text-base max-w-xl mx-auto">
+            Explore the depths of Chinese BaZi astrology — Four Pillars, Five Elements,
             destiny patterns, and practical life guidance from Master Gao Wei.
           </p>
         </div>
@@ -55,11 +60,11 @@ export default function BlogPage() {
         {/* Posts Grid */}
         {posts.length === 0 ? (
           <div className="text-center py-20">
-            <p className="text-[#8a7a6a] text-lg">No posts yet. Ancient wisdom is being transcribed...</p>
-            <p className="text-[#5a4a3a] text-sm mt-2">Check back soon for new articles.</p>
+            <p className="text-[#6b5e4a] text-lg">No posts yet. Ancient wisdom is being transcribed...</p>
+            <p className="text-[#9b8e7c] text-sm mt-2">Check back soon for new articles.</p>
           </div>
         ) : (
-          <div className="grid gap-8">
+          <div className="grid gap-6">
             {posts.map((post, idx) => (
               <BlogCard key={post.slug} post={post} index={idx} />
             ))}
@@ -67,8 +72,8 @@ export default function BlogPage() {
         )}
 
         {/* Footer */}
-        <footer className="mt-20 pt-8 border-t border-[rgba(212,168,83,0.1)] text-center">
-          <Link href="/" className="text-[#8a7a6a] hover:text-[#d4a853] text-sm transition-colors">
+        <footer className="mt-16 pt-8 border-t border-[rgba(184,134,11,0.1)] text-center">
+          <Link href="/" className="text-[#6b5e4a] hover:text-[#b8860b] text-sm transition-colors">
             东方古老占卜 · Ancient Eastern Divination
           </Link>
         </footer>
@@ -78,17 +83,13 @@ export default function BlogPage() {
 }
 
 function BlogCard({ post, index }: { post: BlogPost; index: number }) {
-  const catColor = categoryColors[post.category] || categoryColors.General;
+  const catClass = categoryColors[post.category] || categoryColors.General;
 
   return (
     <Link href={`/blog/${post.slug}`} className="group block">
       <article
-        className="glass-card p-6 md:p-8 transition-all duration-300 hover:border-[rgba(212,168,83,0.3)]"
+        className="card-warm p-6 md:p-8"
         style={{
-          background: 'rgba(20,18,40,0.75)',
-          backdropFilter: 'blur(12px)',
-          border: '1px solid rgba(212,168,83,0.15)',
-          borderRadius: '12px',
           animationDelay: `${index * 0.1}s`,
           animation: 'fadeInUp 0.5s ease-out both',
         }}
@@ -96,32 +97,22 @@ function BlogCard({ post, index }: { post: BlogPost; index: number }) {
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
           <div className="flex-1">
             {/* Category Badge */}
-            <span
-              className="inline-block px-3 py-1 rounded-full text-xs font-medium mb-3"
-              style={{ background: catColor.bg, color: catColor.text }}
-            >
+            <span className={`inline-block px-3 py-1 rounded-full text-xs font-medium mb-3 border ${catClass}`}>
               {post.category}
             </span>
 
-            <h2 className="text-xl md:text-2xl font-serif text-[#e8e0d0] group-hover:text-[#d4a853] transition-colors mb-3">
+            <h2 className="text-xl md:text-2xl font-serif text-[#2c2416] group-hover:text-[#b8860b] transition-colors mb-3">
               {post.title}
             </h2>
 
-            <p className="text-[#8a7a6a] text-sm leading-relaxed mb-4 line-clamp-2">
+            <p className="text-[#6b5e4a] text-sm leading-relaxed mb-4 line-clamp-2">
               {post.description}
             </p>
 
             {/* Tags */}
             <div className="flex flex-wrap gap-2 mb-3">
-              {post.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="text-xs px-2 py-0.5 rounded"
-                  style={{
-                    background: 'rgba(212,168,83,0.08)',
-                    color: '#8a7a6a',
-                  }}
-                >
+              {post.tags.slice(0, 3).map((tag) => (
+                <span key={tag} className="text-xs px-2 py-0.5 rounded bg-[rgba(184,134,11,0.06)] text-[#9b8e7c]">
                   {tag}
                 </span>
               ))}
@@ -130,7 +121,7 @@ function BlogCard({ post, index }: { post: BlogPost; index: number }) {
 
           {/* Date */}
           <div className="md:text-right shrink-0">
-            <time className="text-xs text-[#5a4a3a]" dateTime={post.date}>
+            <time className="text-xs text-[#9b8e7c]" dateTime={post.date}>
               {new Date(post.date).toLocaleDateString('en-US', {
                 year: 'numeric',
                 month: 'long',
@@ -141,9 +132,9 @@ function BlogCard({ post, index }: { post: BlogPost; index: number }) {
         </div>
 
         {/* Read more arrow */}
-        <div className="mt-4 flex items-center gap-2 text-[#d4a853] text-sm opacity-0 group-hover:opacity-100 transition-opacity">
+        <div className="mt-4 flex items-center gap-2 text-[#b8860b] text-sm opacity-0 group-hover:opacity-100 transition-opacity">
           Read article
-          <span className="text-xs">→</span>
+          <span>→</span>
         </div>
       </article>
     </Link>
