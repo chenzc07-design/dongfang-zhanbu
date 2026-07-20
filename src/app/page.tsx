@@ -58,6 +58,11 @@ export default function Home() {
       if (data.success) {
         setResult(data.data);
         setStep('result');
+        // 滚动到结果区域
+        setTimeout(() => {
+          const resultsEl = document.getElementById('reading');
+          if (resultsEl) resultsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 200);
       }
     } catch (err) {
       console.error('[Submit] error', err);
