@@ -1,4 +1,5 @@
 import SectionHeading from '../ui/SectionHeading';
+import MasterPortrait from './MasterPortrait';
 
 const STATS = [
   { icon: '✦', title: '25+ Years of Mastery', desc: 'Formal disciple at age 12 · Orthodox lineage · Esoteric arts specialist' },
@@ -21,15 +22,7 @@ export default function AboutMaster() {
         <div className="grid md:grid-cols-5 gap-10 items-start">
           {/* Portrait */}
           <div className="md:col-span-2">
-            <div className="card-warm rounded-2xl overflow-hidden">
-              <div className="aspect-[3/4] bg-[#f9fafb] flex items-center justify-center">
-                <div className="text-center">
-                  <span className="text-7xl">☯</span>
-                  <p className="text-[#9ca3af] text-xs mt-4">Master Gao Wei</p>
-                  <p className="text-[#d1d5db] text-[10px] mt-1">高伟老师</p>
-                </div>
-              </div>
-            </div>
+            <MasterPortrait />
           </div>
 
           {/* Bio */}

@@ -164,6 +164,12 @@ select.input-mystic {
 }
 ::-webkit-scrollbar-thumb:hover { background: rgba(124, 58, 237, 0.25); }
 
+/* ========== 肖像框（高伟大师） ========== */
+
+.ornate-frame {
+  box-shadow: 0 4px 24px rgba(124, 58, 237, 0.08), 0 0 0 1px rgba(124, 58, 237, 0.06);
+}
+
 /* ========== 淡入动画（保留，但极简） ========== */
 
 @keyframes fadeInUp {
