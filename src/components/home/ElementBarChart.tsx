@@ -22,7 +22,7 @@ export default function ElementBarChart({ elements }: { elements: ElementProfile
     <div className="card-warm rounded-2xl p-6">
       <div className="flex items-center gap-2 mb-5">
         <span className="text-[#b8860b] text-lg">☯</span>
-        <h3 className="font-semibold text-[#2c2416]">Element Profile · 五行</h3>
+        <h3 className="font-semibold text-[#2c2416]">Five Elements Profile · 五行能量</h3>
       </div>
       <div className="space-y-3">
         {elementArray.map(el => {

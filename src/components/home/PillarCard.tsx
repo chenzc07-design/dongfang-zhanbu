@@ -1,4 +1,4 @@
-const PILLAR_NAMES = ['年 Year', '月 Month', '日 Day', '时 Hour'];
+const PILLAR_NAMES = ['Year 年', 'Month 月', 'Day 日', 'Hour 时'];
 
 interface PillarCardProps {
   pillar: {

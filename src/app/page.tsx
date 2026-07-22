@@ -7,7 +7,6 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import HeroSection from '@/components/home/HeroSection';
 import HowItWorks from '@/components/home/HowItWorks';
-import VideoSection from '@/components/home/VideoSection';
 import ResultsPanel from '@/components/home/ResultsPanel';
 import PricingSection from '@/components/home/PricingSection';
 import AboutMaster from '@/components/home/AboutMaster';
@@ -34,11 +33,7 @@ export default function Home() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('[Submit] clicked', { form });
-    if (!form.year || !form.month || !form.day) {
-      console.log('[Submit] missing date fields');
-      return;
-    }
+    if (!form.year || !form.month || !form.day) return;
     setLoading(true);
     try {
       const payload = {
@@ -46,19 +41,15 @@ export default function Home() {
         hour: Number(form.hour || 12), minute: Number(form.minute || 0),
         country: form.country || 'Unknown', city: form.city || 'Unknown',
       };
-      console.log('[Submit] sending payload', payload);
       const res = await fetch('/api/calculate', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
       });
-      console.log('[Submit] response status', res.status);
       const data = await res.json();
-      console.log('[Submit] response data', data);
       if (data.success) {
         setResult(data.data);
         setStep('result');
-        // 滚动到结果区域
         setTimeout(() => {
           const resultsEl = document.getElementById('reading');
           if (resultsEl) resultsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -88,8 +79,6 @@ export default function Home() {
         hour: Number(form.hour || 12), minute: Number(form.minute || 0),
         country: form.country, city: form.city,
       };
-
-      // 创建 PayPal 订单
       const res = await fetch('/api/paypal/create', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -99,15 +88,12 @@ export default function Home() {
           birthData,
         }),
       });
-
       const data = await res.json();
       if (data.error) {
         alert('Payment creation failed: ' + data.error);
         setCheckoutLoading(false);
         return;
       }
-
-      // 跳转到 PayPal 支付页面
       if (data.approveUrl) {
         window.location.href = data.approveUrl;
       }
@@ -137,10 +123,7 @@ export default function Home() {
           {/* 2. How It Works */}
           <HowItWorks />
 
-          {/* 3. Video Section */}
-          <VideoSection />
-
-          {/* 4. Results (conditional) */}
+          {/* 3. Results (conditional) */}
           {(step === 'result' || step === 'pricing') && result && (
             <ResultsPanel
               result={result}
@@ -151,14 +134,12 @@ export default function Home() {
             />
           )}
 
-          {/* 4. Pricing (conditional) */}
+          {/* 4. Pricing */}
           <div ref={pricingRef}>
-            {(step === 'pricing' || (step === 'form' && !result)) && (
-              <PricingSection
-                onCheckout={handleCheckout}
-                checkoutLoading={checkoutLoading}
-              />
-            )}
+            <PricingSection
+              onCheckout={handleCheckout}
+              checkoutLoading={checkoutLoading}
+            />
           </div>
 
           {/* 5. About Master */}

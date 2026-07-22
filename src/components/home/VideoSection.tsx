@@ -7,21 +7,20 @@ export default function VideoSection() {
         <SectionHeading
           label="Experience"
           title="See the Master at Work"
-          subtitle="Witness authentic Daoist rituals and BaZi consultations"
+          subtitle="Witness authentic Daoist rituals and professional BaZi consultations"
           className="mb-10"
         />
 
-        {/* 视频占位区 — 后续上传视频后替换 */}
-        <div className="card-warm rounded-2xl overflow-hidden shadow-lg">
-          <div className="aspect-video bg-[#f5f0e8] flex items-center justify-center relative group cursor-pointer">
+        {/* 视频占位区 */}
+        <div className="card-warm rounded-2xl overflow-hidden">
+          <div className="aspect-video bg-[#f7f3ec] flex items-center justify-center relative group cursor-pointer">
             {/* 播放按钮 */}
             <div className="absolute inset-0 flex items-center justify-center">
-              <div className="w-20 h-20 rounded-full bg-[rgba(184,134,11,0.15)] flex items-center justify-center group-hover:bg-[rgba(184,134,11,0.25)] transition-all duration-300 group-hover:scale-110">
-                <div className="w-0 h-0 border-l-[24px] border-l-[#b8860b] border-t-[14px] border-t-transparent border-b-[14px] border-b-transparent ml-1.5" />
+              <div className="w-20 h-20 rounded-full bg-[rgba(184,134,11,0.08)] border border-[rgba(184,134,11,0.15)] flex items-center justify-center group-hover:bg-[rgba(184,134,11,0.14)] group-hover:border-[rgba(184,134,11,0.3)] transition-all duration-300 group-hover:scale-110">
+                <div className="w-0 h-0 border-l-[22px] border-l-[#b8860b] border-t-[13px] border-t-transparent border-b-[13px] border-b-transparent ml-1.5" />
               </div>
             </div>
-            {/* 占位文字 */}
-            <p className="text-[#9b8e7c] text-sm mt-24">Video coming soon — Master Gao&apos;s sacred rituals</p>
+            <p className="text-[#9b8e7c] text-sm mt-24 italic">Video coming soon — Master Gao&apos;s sacred rituals</p>
           </div>
         </div>
 
@@ -37,7 +36,7 @@ export default function VideoSection() {
                 <img src={item.src} alt={item.label}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" />
               </div>
-              <p className="text-center text-xs text-[#6b5e4a] py-2 font-medium">{item.label}</p>
+              <p className="text-center text-[11px] text-[#6b5e4a] py-2 font-medium tracking-wide">{item.label}</p>
             </div>
           ))}
         </div>
