@@ -26,9 +26,20 @@ export default function Home() {
   });
 
   const pricingRef = useRef<HTMLDivElement>(null);
+  const readingRef = useRef<HTMLDivElement>(null);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     setForm(prev => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+
+  // 统一滚动方法：优先用 ref，fallback 到 id
+  const scrollTo = (target: HTMLElement | string, delay = 0) => {
+    setTimeout(() => {
+      const el = typeof target === 'string' ? document.getElementById(target) : target;
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, delay);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -50,10 +61,8 @@ export default function Home() {
       if (data.success) {
         setResult(data.data);
         setStep('result');
-        setTimeout(() => {
-          const resultsEl = document.getElementById('reading');
-          if (resultsEl) resultsEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }, 200);
+        // 等渲染完成后滚动到结果区
+        scrollTo('reading', 300);
       }
     } catch (err) {
       console.error('[Submit] error', err);
@@ -65,10 +74,8 @@ export default function Home() {
   const handleEmailSubmit = async () => {
     if (!email || !email.includes('@')) return;
     setEmailSubmitted(true);
-    setTimeout(() => {
-      setStep('pricing');
-      setTimeout(() => pricingRef.current?.scrollIntoView({ behavior: 'smooth' }), 100);
-    }, 600);
+    // 短暂延迟后滚动到定价区
+    scrollTo(pricingRef.current!, 500);
   };
 
   const handleCheckout = async (product: ProductTier) => {
