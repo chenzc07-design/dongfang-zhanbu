@@ -68,42 +68,41 @@ export default async function BlogPostPage({ params }: Props) {
   };
 
   return (
-    <div className="min-h-screen bg-[#faf8f4] text-[#2c2416]">
+    <div className="min-h-screen bg-white text-gray-900">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
 
-      <div className="subtle-bg" />
 
       <article className="relative z-10 max-w-3xl mx-auto px-4 py-12">
-        <Link href="/blog" className="inline-flex items-center gap-2 text-[#9b8e7c] hover:text-[#b8860b] text-sm mb-8 transition-colors">
+        <Link href="/blog" className="inline-flex items-center gap-2 text-[#9ca3af] hover:text-[#7c3aed] text-sm mb-8 transition-colors">
           ← Back to Insights
         </Link>
 
         <header className="mb-10">
           <div className="flex items-center gap-4 mb-4">
-            <span className="px-3 py-1 rounded-full text-[10px] font-medium bg-[rgba(184,134,11,0.08)] text-[#b8860b] border border-[rgba(184,134,11,0.15)] tracking-wide">
+            <span className="px-3 py-1 rounded-full text-[10px] font-medium bg-purple-50 text-[#7c3aed] border border-purple-200 tracking-wide">
               {post.category}
             </span>
-            <time className="text-xs text-[#9b8e7c]" dateTime={post.date}>
+            <time className="text-xs text-[#9ca3af]" dateTime={post.date}>
               {new Date(post.date).toLocaleDateString('en-US', {
                 year: 'numeric', month: 'long', day: 'numeric',
               })}
             </time>
           </div>
 
-          <h1 className="text-3xl md:text-4xl font-bold text-[#2c2416] mb-4 leading-tight">
+          <h1 className="text-3xl md:text-4xl font-bold text-[#1f2937] mb-4 leading-tight">
             {post.title}
           </h1>
 
-          <p className="text-[#6b5e4a] text-lg leading-relaxed">
+          <p className="text-[#6b7280] text-lg leading-relaxed">
             {post.description}
           </p>
 
           <div className="flex flex-wrap gap-2 mt-4">
             {post.tags.map((tag) => (
-              <span key={tag} className="text-[10px] px-2 py-0.5 rounded bg-[rgba(184,134,11,0.04)] text-[#9b8e7c]">
+              <span key={tag} className="text-[10px] px-2 py-0.5 rounded bg-purple-50 text-[#9ca3af]">
                 {tag}
               </span>
             ))}
@@ -112,28 +111,28 @@ export default async function BlogPostPage({ params }: Props) {
 
         <div
           className="prose prose-lg max-w-none
-            prose-headings:text-[#2c2416] prose-headings:font-bold
+            prose-headings:text-[#1f2937] prose-headings:font-bold
             prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
             prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
-            prose-p:text-[#6b5e4a] prose-p:leading-relaxed prose-p:mb-5
-            prose-strong:text-[#2c2416]
-            prose-a:text-[#b8860b] prose-a:no-underline hover:prose-a:underline
-            prose-li:text-[#6b5e4a]
-            prose-blockquote:border-l-[#b8860b] prose-blockquote:text-[#6b5e4a] prose-blockquote:italic
-            prose-code:text-[#b8860b] prose-code:bg-[rgba(184,134,11,0.06)] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
-            prose-hr:border-[rgba(184,134,11,0.08)]
+            prose-p:text-[#6b7280] prose-p:leading-relaxed prose-p:mb-5
+            prose-strong:text-[#1f2937]
+            prose-a:text-[#7c3aed] prose-a:no-underline hover:prose-a:underline
+            prose-li:text-[#6b7280]
+            prose-blockquote:border-l-[#7c3aed] prose-blockquote:text-[#6b7280] prose-blockquote:italic
+            prose-code:text-[#7c3aed] prose-code:bg-purple-50 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded
+            prose-hr:border-gray-200
             [&_table]:border-collapse [&_table]:w-full [&_table]:my-6
-            [&_th]:border [&_th]:border-[rgba(184,134,11,0.12)] [&_th]:px-4 [&_th]:py-2 [&_th]:text-[#b8860b] [&_th]:text-sm [&_th]:bg-[rgba(184,134,11,0.04)]
-            [&_td]:border [&_td]:border-[rgba(184,134,11,0.08)] [&_td]:px-4 [&_td]:py-2 [&_td]:text-[#6b5e4a] [&_td]:text-sm
+            [&_th]:border [&_th]:border-[rgba(124,58,237,0.12)] [&_th]:px-4 [&_th]:py-2 [&_th]:text-[#7c3aed] [&_th]:text-sm [&_th]:bg-purple-50
+            [&_td]:border [&_td]:border-gray-200 [&_td]:px-4 [&_td]:py-2 [&_td]:text-[#6b7280] [&_td]:text-sm
           "
           dangerouslySetInnerHTML={{ __html: renderMarkdown(post.content) }}
         />
 
         <div className="mt-16 card-warm p-8 rounded-2xl text-center">
-          <h3 className="text-xl font-bold text-[#2c2416] mb-3">
+          <h3 className="text-xl font-bold text-[#1f2937] mb-3">
             Curious About Your Own Life Blueprint?
           </h3>
-          <p className="text-[#6b5e4a] text-sm mb-6">
+          <p className="text-[#6b7280] text-sm mb-6">
             Get your personalized BaZi chart and discover what the Four Pillars reveal about your unique energy signature.
           </p>
           <Link href="/" className="btn-gold inline-block px-8 py-3 text-sm">
@@ -141,11 +140,11 @@ export default async function BlogPostPage({ params }: Props) {
           </Link>
         </div>
 
-        <footer className="mt-16 pt-8 border-t border-[rgba(184,134,11,0.06)] text-center">
-          <Link href="/" className="text-[#9b8e7c] hover:text-[#b8860b] text-sm transition-colors">
+        <footer className="mt-16 pt-8 border-t border-gray-100 text-center">
+          <Link href="/" className="text-[#9ca3af] hover:text-[#7c3aed] text-sm transition-colors">
             Dongfang Divination · Authentic BaZi Life Blueprint Analysis
           </Link>
-          <p className="text-[#9b8e7c] text-xs mt-2">
+          <p className="text-[#9ca3af] text-xs mt-2">
             Written by Master Gao Wei — 25+ years of BaZi expertise
           </p>
         </footer>
@@ -158,7 +157,7 @@ function renderMarkdown(md: string): string {
   let html = md;
 
   html = html.replace(/```(\w*)\n([\s\S]*?)```/g, (_, lang, code) => {
-    return `<pre style="background:#f7f3ec;border:1px solid rgba(184,134,11,0.1);border-radius:8px;padding:16px;overflow-x:auto;margin:16px 0;font-size:13px;color:#6b5e4a;"><code>${escapeHtml(code.trim())}</code></pre>`;
+    return `<pre style="background:#f9fafb;border:1px solid rgba(124,58,237,0.08);border-radius:8px;padding:16px;overflow-x:auto;margin:16px 0;font-size:13px;color:#6b7280;"><code>${escapeHtml(code.trim())}</code></pre>`;
   });
 
   html = html.replace(/`([^`]+)`/g, '<code>$1</code>');

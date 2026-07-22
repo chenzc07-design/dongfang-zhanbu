@@ -36,7 +36,7 @@ export default function BirthForm({ form, onChange, onSubmit, loading }: BirthFo
   return (
     <form onSubmit={onSubmit} className="space-y-5">
       <div>
-        <p className="text-xs text-[#b8860b] tracking-[0.2em] uppercase mb-3 font-medium">Birth Date · 出生日期</p>
+        <p className="text-xs text-[#7c3aed] tracking-[0.2em] uppercase mb-3 font-medium">Birth Date · 出生日期</p>
         <div className="grid grid-cols-3 gap-3">
           {[
             { name: 'year', label: 'Year 年', options: years.map(y => ({ v: y, l: String(y) })) },
@@ -44,7 +44,7 @@ export default function BirthForm({ form, onChange, onSubmit, loading }: BirthFo
             { name: 'day', label: 'Day 日', options: days.map(d => ({ v: d, l: String(d).padStart(2, '0') })) },
           ].map(f => (
             <div key={f.name}>
-              <label className="block text-[10px] text-[#9b8e7c] mb-1.5 tracking-wider">{f.label}</label>
+              <label className="block text-[10px] text-[#9ca3af] mb-1.5 tracking-wider">{f.label}</label>
               <select name={f.name} value={form[f.name as keyof BirthFormData]} onChange={onChange}
                 className="input-mystic text-sm py-3">
                 <option value="">—</option>
@@ -58,10 +58,10 @@ export default function BirthForm({ form, onChange, onSubmit, loading }: BirthFo
       </div>
 
       <div>
-        <p className="text-xs text-[#b8860b] tracking-[0.2em] uppercase mb-3 font-medium">Birth Time · 出生时辰</p>
+        <p className="text-xs text-[#7c3aed] tracking-[0.2em] uppercase mb-3 font-medium">Birth Time · 出生时辰</p>
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <label className="block text-[10px] text-[#9b8e7c] mb-1.5 tracking-wider">Shi Chen 时辰</label>
+            <label className="block text-[10px] text-[#9ca3af] mb-1.5 tracking-wider">Shi Chen 时辰</label>
             <select name="hour" value={form.hour} onChange={onChange} className="input-mystic text-sm py-3">
               <option value="">Unknown</option>
               {SHI_CHEN.map(sc => (
@@ -70,7 +70,7 @@ export default function BirthForm({ form, onChange, onSubmit, loading }: BirthFo
             </select>
           </div>
           <div>
-            <label className="block text-[10px] text-[#9b8e7c] mb-1.5 tracking-wider">Minute 分</label>
+            <label className="block text-[10px] text-[#9ca3af] mb-1.5 tracking-wider">Minute 分</label>
             <select name="minute" value={form.minute} onChange={onChange} className="input-mystic text-sm py-3">
               <option value="">00</option>
               {minutes.map(m => (
@@ -82,15 +82,15 @@ export default function BirthForm({ form, onChange, onSubmit, loading }: BirthFo
       </div>
 
       <div>
-        <p className="text-xs text-[#b8860b] tracking-[0.2em] uppercase mb-3 font-medium">Birth Place · 出生地点</p>
+        <p className="text-xs text-[#7c3aed] tracking-[0.2em] uppercase mb-3 font-medium">Birth Place · 出生地点</p>
         <div className="grid grid-cols-2 gap-3">
           <div>
-            <label className="block text-[10px] text-[#9b8e7c] mb-1.5 tracking-wider">Country 国家</label>
+            <label className="block text-[10px] text-[#9ca3af] mb-1.5 tracking-wider">Country 国家</label>
             <input name="country" value={form.country} onChange={onChange}
               placeholder="e.g. United States" className="input-mystic text-sm" />
           </div>
           <div>
-            <label className="block text-[10px] text-[#9b8e7c] mb-1.5 tracking-wider">City 城市</label>
+            <label className="block text-[10px] text-[#9ca3af] mb-1.5 tracking-wider">City 城市</label>
             <input name="city" value={form.city} onChange={onChange}
               placeholder="e.g. New York" className="input-mystic text-sm" />
           </div>

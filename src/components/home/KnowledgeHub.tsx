@@ -44,19 +44,19 @@ export default function KnowledgeHub() {
               className="card-warm rounded-2xl p-6 group flex flex-col transition-all duration-300"
             >
               <div className="flex items-center gap-2 mb-4">
-                <span className="text-[10px] text-[#b8860b] tracking-wider uppercase font-medium bg-[rgba(184,134,11,0.06)] px-2.5 py-1 rounded-full">
+                <span className="text-[10px] text-[#7c3aed] tracking-wider uppercase font-medium bg-purple-50 px-2.5 py-1 rounded-full">
                   {article.category}
                 </span>
-                <span className="text-[10px] text-[#9b8e7c]">{article.readTime} read</span>
+                <span className="text-[10px] text-[#9ca3af]">{article.readTime} read</span>
               </div>
-              <h3 className="text-[#2c2416] font-semibold text-base leading-snug mb-3 group-hover:text-[#b8860b] transition-colors">
+              <h3 className="text-[#1f2937] font-semibold text-base leading-snug mb-3 group-hover:text-[#7c3aed] transition-colors">
                 {article.title}
               </h3>
-              <p className="text-sm text-[#6b5e4a] leading-relaxed flex-1">
+              <p className="text-sm text-[#6b7280] leading-relaxed flex-1">
                 {article.excerpt}
               </p>
-              <div className="mt-4 pt-4 border-t border-[rgba(184,134,11,0.06)]">
-                <span className="text-xs text-[#b8860b] font-medium tracking-wide group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+              <div className="mt-4 pt-4 border-t border-gray-100">
+                <span className="text-xs text-[#7c3aed] font-medium tracking-wide group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
                   Read Article
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </span>

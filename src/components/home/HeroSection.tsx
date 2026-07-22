@@ -15,7 +15,7 @@ interface HeroSectionProps {
 
 export default function HeroSection({ form, onChange, onSubmit, loading }: HeroSectionProps) {
   return (
-    <section className="hero-warm relative overflow-hidden">
+    <section className="bg-white relative overflow-hidden">
       {/* 背景图 — 降低不透明度 */}
       <div className="absolute inset-0 z-0">
         <img
@@ -26,7 +26,7 @@ export default function HeroSection({ form, onChange, onSubmit, loading }: HeroS
       </div>
 
       {/* 装饰性中国风水印 */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[#d4a843] opacity-[0.04] pointer-events-none select-none"
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[#a78bfa] opacity-[0.04] pointer-events-none select-none"
         style={{ fontSize: 'min(50vw, 400px)' }}>
         ☯
       </div>
@@ -35,23 +35,23 @@ export default function HeroSection({ form, onChange, onSubmit, loading }: HeroS
         {/* 标题 */}
         <div className="text-center mb-10">
           <div className="flex items-center justify-center gap-3 mb-5">
-            <div className="w-10 h-px bg-gradient-to-r from-transparent to-[rgba(184,134,11,0.3)]" />
-            <span className="text-[#b8860b] text-[11px] tracking-[0.3em] uppercase font-medium">✦ Ancient Wisdom ✦</span>
-            <div className="w-10 h-px bg-gradient-to-r from-[rgba(184,134,11,0.3)] to-transparent" />
+            <div className="w-10 h-px bg-gradient-to-r from-transparent to-purple-200" />
+            <span className="text-[#7c3aed] text-[11px] tracking-[0.3em] uppercase font-medium">✦ Ancient Wisdom ✦</span>
+            <div className="w-10 h-px bg-gradient-to-r from-purple-200 to-transparent" />
           </div>
 
           <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-3">
-            <span className="text-[#2c2416]">Discover Your</span>
+            <span className="text-[#1f2937]">Discover Your</span>
             <br />
-            <span className="text-[#b8860b]">Life Blueprint</span>
+            <span className="text-[#7c3aed]">Life Blueprint</span>
           </h1>
-          <p className="text-lg md:text-xl font-light tracking-wide text-[#b8860b]">
+          <p className="text-lg md:text-xl font-light tracking-wide text-[#7c3aed]">
             Authentic BaZi Reading by Senior Metaphysics Consultant
           </p>
 
-          <p className="text-[#6b5e4a] max-w-lg mx-auto text-sm leading-relaxed mt-4">
+          <p className="text-[#6b7280] max-w-lg mx-auto text-sm leading-relaxed mt-4">
             The ancient art of{' '}
-            <span className="text-[#b8860b] font-medium">BaZi (八字)</span> — the Four Pillars of Destiny —{' '}
+            <span className="text-[#7c3aed] font-medium">BaZi (八字)</span> — the Four Pillars of Destiny —{' '}
             decodes your unique energy blueprint and reveals optimal timing for career, relationships, and personal growth.
           </p>
         </div>
@@ -62,12 +62,12 @@ export default function HeroSection({ form, onChange, onSubmit, loading }: HeroS
         </div>
 
         {/* 底部资质 */}
-        <div className="flex flex-wrap items-center justify-center gap-2 text-xs text-[#9b8e7c] mt-8">
-          <span className="text-[#b8860b]">✦</span>
+        <div className="flex flex-wrap items-center justify-center gap-2 text-xs text-[#9ca3af] mt-8">
+          <span className="text-[#7c3aed]">✦</span>
           <span>25+ Years of Mastery</span>
-          <span className="text-[#ccc0a8]">·</span>
+          <span className="text-[#d1d5db]">·</span>
           <span>I Ching Scholar · 《周易》</span>
-          <span className="text-[#ccc0a8]">·</span>
+          <span className="text-[#d1d5db]">·</span>
           <span>Cert. Senior Metaphysics Consultant</span>
         </div>
       </div>

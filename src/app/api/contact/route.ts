@@ -24,13 +24,13 @@ export async function POST(req: Request) {
           subject: `💬 New Question from ${name || 'Visitor'}`,
           html: `
             <div style="font-family:sans-serif;max-width:600px;margin:0 auto;">
-              <h2 style="color:#d4a843;">New Contact Form Message</h2>
+              <h2 style="color:#a78bfa;">New Contact Form Message</h2>
               <table style="width:100%;border-collapse:collapse;">
                 <tr><td style="padding:8px 0;color:#666;width:80px;">Name:</td><td style="padding:8px 0;"><strong>${name || 'Not provided'}</strong></td></tr>
                 <tr><td style="padding:8px 0;color:#666;">Email:</td><td style="padding:8px 0;"><strong>${email}</strong></td></tr>
                 <tr><td style="padding:8px 0;color:#666;">Time:</td><td style="padding:8px 0;">${new Date().toISOString()}</td></tr>
               </table>
-              <div style="margin-top:16px;padding:16px;background:#f5f0e8;border-radius:8px;border-left:3px solid #d4a843;">
+              <div style="margin-top:16px;padding:16px;background:#f9fafb;border-radius:8px;border-left:3px solid #a78bfa;">
                 <p style="margin:0;line-height:1.6;">${question}</p>
               </div>
               <p style="margin-top:16px;color:#999;font-size:12px;">

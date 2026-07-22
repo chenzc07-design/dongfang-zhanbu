@@ -40,13 +40,13 @@ export default function ContactWidget() {
         onClick={() => setOpen(!open)}
         className={`fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 ${
           open
-            ? 'bg-white border border-[rgba(184,134,11,0.2)] rotate-45'
-            : 'bg-gradient-to-br from-[#d4a843] to-[#b8860b] hover:shadow-[0_0_25px_rgba(184,134,11,0.3)]'
+            ? 'bg-white border border-purple-200 rotate-45'
+            : 'bg-gradient-to-br from-[#a78bfa] to-[#7c3aed] hover:shadow-[0_0_25px_rgba(124,58,237,0.25)]'
         }`}
         aria-label={open ? 'Close chat' : 'Open chat'}
       >
         {open ? (
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#b8860b" strokeWidth="2">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" strokeWidth="2">
             <path d="M18 6L6 18M6 6l12 12"/>
           </svg>
         ) : (
@@ -60,14 +60,14 @@ export default function ContactWidget() {
       {open && (
         <div className="fixed bottom-24 right-6 z-50 w-[340px] max-w-[calc(100vw-3rem)] card-warm rounded-2xl shadow-2xl overflow-hidden animate-fade-in-up">
           {/* 头部 */}
-          <div className="bg-gradient-to-r from-[rgba(184,134,11,0.06)] to-transparent px-5 py-4 border-b border-[rgba(184,134,11,0.08)]">
+          <div className="bg-gradient-to-r from-purple-50 to-transparent px-5 py-4 border-b border-gray-200">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#d4a843] to-[#b8860b] flex items-center justify-center text-sm text-white">
+              <div className="w-9 h-9 rounded-full bg-gradient-to-br from-[#a78bfa] to-[#7c3aed] flex items-center justify-center text-sm text-white">
                 ☯
               </div>
               <div>
-                <p className="text-sm font-semibold text-[#2c2416]">Ask Master Gao Wei</p>
-                <p className="text-[10px] text-[#9b8e7c]">We typically reply within 24 hours</p>
+                <p className="text-sm font-semibold text-[#1f2937]">Ask Master Gao Wei</p>
+                <p className="text-[10px] text-[#9ca3af]">We typically reply within 24 hours</p>
               </div>
             </div>
           </div>
@@ -77,9 +77,9 @@ export default function ContactWidget() {
             {submitted ? (
               <div className="text-center py-6">
                 <div className="text-4xl mb-3">🙏</div>
-                <p className="text-[#2c2416] font-semibold mb-2">Message Received</p>
-                <p className="text-sm text-[#6b5e4a] leading-relaxed">
-                  Master Gao Wei will review your question and respond to <strong className="text-[#b8860b]">{form.email}</strong> within 24 hours.
+                <p className="text-[#1f2937] font-semibold mb-2">Message Received</p>
+                <p className="text-sm text-[#6b7280] leading-relaxed">
+                  Master Gao Wei will review your question and respond to <strong className="text-[#7c3aed]">{form.email}</strong> within 24 hours.
                 </p>
                 <button
                   onClick={() => { setOpen(false); setSubmitted(false); setForm({ name: '', email: '', question: '' }); }}
@@ -91,7 +91,7 @@ export default function ContactWidget() {
             ) : (
               <form onSubmit={handleSubmit} className="space-y-3">
                 <div>
-                  <label className="block text-[10px] text-[#9b8e7c] mb-1">Your Name</label>
+                  <label className="block text-[10px] text-[#9ca3af] mb-1">Your Name</label>
                   <input
                     type="text"
                     value={form.name}
@@ -101,7 +101,7 @@ export default function ContactWidget() {
                   />
                 </div>
                 <div>
-                  <label className="block text-[10px] text-[#9b8e7c] mb-1">Your Email <span className="text-[#c0392b]">*</span></label>
+                  <label className="block text-[10px] text-[#9ca3af] mb-1">Your Email <span className="text-[#f43f5e]">*</span></label>
                   <input
                     type="email"
                     required
@@ -112,7 +112,7 @@ export default function ContactWidget() {
                   />
                 </div>
                 <div>
-                  <label className="block text-[10px] text-[#9b8e7c] mb-1">Your Question <span className="text-[#c0392b]">*</span></label>
+                  <label className="block text-[10px] text-[#9ca3af] mb-1">Your Question <span className="text-[#f43f5e]">*</span></label>
                   <textarea
                     required
                     value={form.question}
@@ -123,7 +123,7 @@ export default function ContactWidget() {
                   />
                 </div>
                 {error && (
-                  <p className="text-xs text-[#c0392b]">{error}</p>
+                  <p className="text-xs text-[#f43f5e]">{error}</p>
                 )}
                 <button
                   type="submit"
@@ -132,7 +132,7 @@ export default function ContactWidget() {
                 >
                   {sending ? 'Sending...' : 'Send Message'}
                 </button>
-                <p className="text-[9px] text-[#9b8e7c] text-center">
+                <p className="text-[9px] text-[#9ca3af] text-center">
                   Your privacy is respected. We never share your information.
                 </p>
               </form>

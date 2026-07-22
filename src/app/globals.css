@@ -1,191 +1,129 @@
 @import "tailwindcss";
 
-/* ========== 东方古老占卜 · 温暖东方主题 v3 ========== */
-/* 参考：AstroBazi（宋画仙鹤、暖白底）、DAO Essentia（现代卡片）、Astro-Charts（极简留白） */
+/* ========== Dongfang Divination · 对标 CafeAstrology 简洁风格 ========== */
+/* 纯白背景 + 淡紫主色 + 系统字体 + 无冗余动效 */
 
 @theme inline {
-  --color-bg-page: #faf8f4;
+  --color-primary: #7c3aed;
+  --color-primary-light: #a78bfa;
+  --color-primary-dark: #6d28d9;
+  --color-primary-bg: rgba(124, 58, 237, 0.06);
+  --color-primary-border: rgba(124, 58, 237, 0.12);
+  --color-accent-pink: #ec4899;
+  --color-accent-rose: #f43f5e;
+  --color-text-primary: #1f2937;
+  --color-text-secondary: #6b7280;
+  --color-text-muted: #9ca3af;
+  --color-bg-page: #ffffff;
   --color-bg-card: #ffffff;
-  --color-bg-card-alt: #f7f3ec;
-  --color-bg-hero: #f5f0e8;
-  --color-gold: #b8860b;
-  --color-gold-light: #d4a843;
-  --color-gold-dark: #8b6914;
-  --color-accent-red: #9b2d30;
-  --color-accent-red-light: #c0392b;
-  --color-text-primary: #2c2416;
-  --color-text-secondary: #6b5e4a;
-  --color-text-muted: #9b8e7c;
-  --color-border-card: rgba(184, 134, 11, 0.12);
-  --color-border-card-hover: rgba(184, 134, 11, 0.25);
-  --color-shadow-card: rgba(44, 36, 22, 0.06);
-  --font-serif: 'Georgia', 'Times New Roman', serif;
+  --color-bg-alt: #f9fafb;
+  --color-border: #e5e7eb;
+  --color-border-hover: #d1d5db;
+  --color-shadow: rgba(0, 0, 0, 0.04);
+  --color-shadow-hover: rgba(0, 0, 0, 0.08);
 }
 
 /* ========== 基础样式 ========== */
 
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(184, 134, 11, 0.3) transparent;
+  scrollbar-color: rgba(124, 58, 237, 0.15) transparent;
 }
 
 body {
-  background: #faf8f4;
-  color: #2c2416;
+  background: #ffffff;
+  color: #1f2937;
   font-family: var(--font-geist-sans), system-ui, -apple-system, 'Segoe UI', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ========== 微妙背景纹理（替代恐怖星空） ========== */
-
-.subtle-bg {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-  overflow: hidden;
+h1, h2, h3, h4 {
+  font-weight: 700;
+  line-height: 1.3;
 }
 
-.subtle-bg::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background:
-    /* 极淡的暖色渐变 - 模拟宣纸质感 */
-    radial-gradient(ellipse 100% 60% at 50% 0%, rgba(184, 134, 11, 0.04), transparent 60%),
-    radial-gradient(ellipse 60% 40% at 20% 80%, rgba(155, 45, 48, 0.02), transparent 50%);
-}
-
-.subtle-bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  opacity: 0.03;
-  background-image:
-    radial-gradient(circle at 15% 25%, #b8860b 0.5px, transparent 0.5px),
-    radial-gradient(circle at 35% 60%, #b8860b 0.5px, transparent 0.5px),
-    radial-gradient(circle at 55% 15%, #b8860b 0.5px, transparent 0.5px),
-    radial-gradient(circle at 75% 45%, #b8860b 0.5px, transparent 0.5px),
-    radial-gradient(circle at 85% 75%, #b8860b 0.5px, transparent 0.5px),
-    radial-gradient(circle at 10% 80%, #b8860b 0.5px, transparent 0.5px),
-    radial-gradient(circle at 65% 85%, #b8860b 0.5px, transparent 0.5px),
-    radial-gradient(circle at 40% 40%, #b8860b 0.5px, transparent 0.5px);
-  background-size: 200px 200px;
-}
-
-/* ========== Hero 区域（暖色渐变） ========== */
-
-.hero-warm {
-  background:
-    radial-gradient(ellipse 120% 70% at 50% -10%, rgba(212, 168, 67, 0.08), transparent 55%),
-    radial-gradient(ellipse 80% 50% at 50% 100%, rgba(184, 134, 11, 0.04), transparent 55%),
-    linear-gradient(180deg, #f5f0e8 0%, #faf8f4 100%);
-}
-
-/* ========== 卡片样式（白色 + 微阴影 + 细边框） ========== */
+/* ========== 卡片（对标 CafeAstrology：白底 + 细灰边框 + 微阴影） ========== */
 
 .card-warm {
   background: #ffffff;
-  border: 1px solid rgba(184, 134, 11, 0.1);
-  border-radius: 1rem;
-  box-shadow: 0 2px 12px rgba(44, 36, 22, 0.04), 0 1px 3px rgba(44, 36, 22, 0.03);
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
 .card-warm:hover {
-  border-color: rgba(184, 134, 11, 0.2);
-  box-shadow: 0 4px 20px rgba(44, 36, 22, 0.06), 0 2px 6px rgba(44, 36, 22, 0.04);
-  transform: translateY(-2px);
+  border-color: #d1d5db;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .card-warm-glow {
-  box-shadow: 0 2px 16px rgba(44, 36, 22, 0.05), 0 0 0 1px rgba(184, 134, 11, 0.15);
-}
-
-.card-warm-glow:hover {
-  box-shadow: 0 6px 30px rgba(184, 134, 11, 0.1), 0 0 0 1px rgba(184, 134, 11, 0.3);
-}
-
-/* ========== 金色分割线 ========== */
-
-.gold-divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(184, 134, 11, 0.25), transparent);
-  margin: 2rem 0;
+  border-color: rgba(124, 58, 237, 0.2);
+  box-shadow: 0 1px 4px rgba(124, 58, 237, 0.06);
 }
 
 /* ========== 按钮 ========== */
 
 .btn-gold {
-  background: linear-gradient(135deg, #d4a843, #b8860b);
-  background-size: 200% 200%;
+  background: #7c3aed;
   color: #ffffff;
   font-weight: 600;
   border: none;
-  border-radius: 0.75rem;
-  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  padding: 0.7rem 1.5rem;
   cursor: pointer;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-  letter-spacing: 0.01em;
-  box-shadow: 0 2px 8px rgba(184, 134, 11, 0.2);
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+  font-size: 0.9375rem;
 }
 
 .btn-gold:hover {
-  background-position: right center;
-  box-shadow: 0 4px 20px rgba(184, 134, 11, 0.35);
-  transform: translateY(-2px);
+  background: #6d28d9;
+  box-shadow: 0 2px 8px rgba(124, 58, 237, 0.25);
 }
 
 .btn-gold:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-  transform: none;
-}
-
-.btn-gold:active {
-  transform: translateY(0);
 }
 
 .btn-ghost {
-  background: rgba(184, 134, 11, 0.04);
-  color: #8b6914;
-  border: 1px solid rgba(184, 134, 11, 0.2);
-  border-radius: 0.75rem;
-  padding: 0.75rem 1.5rem;
+  background: transparent;
+  color: #7c3aed;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.5rem;
+  padding: 0.7rem 1.5rem;
   font-weight: 500;
   cursor: pointer;
-  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.2s ease;
 }
 
 .btn-ghost:hover {
-  background: rgba(184, 134, 11, 0.08);
-  border-color: rgba(184, 134, 11, 0.35);
-  transform: translateY(-1px);
+  border-color: #7c3aed;
+  background: rgba(124, 58, 237, 0.04);
 }
 
 /* ========== 输入框 ========== */
 
 .input-mystic {
-  background: #faf8f4;
-  border: 1px solid rgba(184, 134, 11, 0.15);
-  color: #2c2416;
-  border-radius: 0.75rem;
-  padding: 0.75rem 1rem;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  color: #1f2937;
+  border-radius: 0.5rem;
+  padding: 0.7rem 0.875rem;
   outline: none;
-  transition: all 0.3s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
   width: 100%;
   font-size: 0.9375rem;
 }
 
 .input-mystic:focus {
-  border-color: rgba(184, 134, 11, 0.5);
-  box-shadow: 0 0 0 3px rgba(184, 134, 11, 0.06);
-  background: #ffffff;
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.08);
 }
 
 .input-mystic::placeholder {
-  color: rgba(107, 94, 74, 0.4);
+  color: #9ca3af;
 }
 
 select.input-mystic {
@@ -193,63 +131,27 @@ select.input-mystic {
   cursor: pointer;
 }
 
-select.input-mystic option {
-  background: #ffffff;
-  color: #2c2416;
-}
+/* ========== 分割线 ========== */
 
-/* ========== 动画 ========== */
-
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+.gold-divider {
+  height: 1px;
+  background: #e5e7eb;
+  margin: 2rem 0;
 }
-
-@keyframes fadeSlideUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out forwards;
-}
-
-.animate-fade-slide-up {
-  animation: fadeSlideUp 0.7s ease-out forwards;
-}
-
-/* Stagger children */
-.stagger-animate > * {
-  opacity: 0;
-  animation: fadeInUp 0.5s ease-out forwards;
-}
-.stagger-animate > *:nth-child(1) { animation-delay: 0.05s; }
-.stagger-animate > *:nth-child(2) { animation-delay: 0.1s; }
-.stagger-animate > *:nth-child(3) { animation-delay: 0.15s; }
-.stagger-animate > *:nth-child(4) { animation-delay: 0.2s; }
-.stagger-animate > *:nth-child(5) { animation-delay: 0.25s; }
-.stagger-animate > *:nth-child(6) { animation-delay: 0.3s; }
 
 /* ========== 元素徽标 ========== */
 
-.badge-wood { background: rgba(76, 175, 80, 0.1); color: #388e3c; border: 1px solid rgba(76, 175, 80, 0.2); }
-.badge-fire { background: rgba(244, 67, 54, 0.1); color: #d32f2f; border: 1px solid rgba(244, 67, 54, 0.2); }
-.badge-earth { background: rgba(255, 152, 0, 0.1); color: #e65100; border: 1px solid rgba(255, 152, 0, 0.2); }
-.badge-metal { background: rgba(120, 120, 120, 0.1); color: #616161; border: 1px solid rgba(120, 120, 120, 0.2); }
-.badge-water { background: rgba(33, 150, 243, 0.1); color: #1976d2; border: 1px solid rgba(33, 150, 243, 0.2); }
-
-/* ========== 华丽边框 ========== */
-
-.ornate-frame {
-  border: 2px solid rgba(184, 134, 11, 0.2);
-  box-shadow: 0 4px 24px rgba(184, 134, 11, 0.06);
-}
+.badge-wood { background: rgba(76, 175, 80, 0.08); color: #2e7d32; border: 1px solid rgba(76, 175, 80, 0.15); }
+.badge-fire { background: rgba(244, 67, 54, 0.08); color: #c62828; border: 1px solid rgba(244, 67, 54, 0.15); }
+.badge-earth { background: rgba(255, 152, 0, 0.08); color: #e65100; border: 1px solid rgba(255, 152, 0, 0.15); }
+.badge-metal { background: rgba(120, 120, 120, 0.08); color: #424242; border: 1px solid rgba(120, 120, 120, 0.15); }
+.badge-water { background: rgba(33, 150, 243, 0.08); color: #1565c0; border: 1px solid rgba(33, 150, 243, 0.15); }
 
 /* ========== 选中状态 ========== */
 
 ::selection {
-  background: rgba(184, 134, 11, 0.2);
-  color: #2c2416;
+  background: rgba(124, 58, 237, 0.15);
+  color: #1f2937;
 }
 
 /* ========== 滚动条 ========== */
@@ -257,7 +159,30 @@ select.input-mystic option {
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb {
-  background: rgba(184, 134, 11, 0.2);
+  background: rgba(124, 58, 237, 0.12);
   border-radius: 3px;
 }
-::-webkit-scrollbar-thumb:hover { background: rgba(184, 134, 11, 0.35); }
+::-webkit-scrollbar-thumb:hover { background: rgba(124, 58, 237, 0.25); }
+
+/* ========== 淡入动画（保留，但极简） ========== */
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.4s ease-out forwards;
+}
+
+/* ========== 段落间距 ========== */
+
+.section-padding {
+  padding: 4rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding: 5rem 2rem;
+  }
+}

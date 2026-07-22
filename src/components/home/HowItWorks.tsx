@@ -38,7 +38,7 @@ const STEPS = [
 
 export default function HowItWorks() {
   return (
-    <section className="py-20 md:py-24 bg-[#f7f3ec]">
+    <section className="py-20 md:py-24 bg-[#f9fafb]">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <SectionHeading
           label="The Process"
@@ -50,12 +50,12 @@ export default function HowItWorks() {
         <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto">
           {STEPS.map(s => (
             <div key={s.num} className="card-warm rounded-2xl p-8 text-center group">
-              <span className="text-5xl font-bold text-[rgba(184,134,11,0.06)]">{s.num}</span>
-              <div className="my-4 text-[#b8860b] flex justify-center group-hover:scale-110 transition-transform duration-300">
+              <span className="text-5xl font-bold text-[rgba(124,58,237,0.04)]">{s.num}</span>
+              <div className="my-4 text-[#7c3aed] flex justify-center group-hover:scale-110 transition-transform duration-300">
                 {s.icon}
               </div>
-              <h3 className="font-semibold text-[#2c2416] text-lg mb-3">{s.title}</h3>
-              <p className="text-sm text-[#6b5e4a] leading-relaxed">{s.desc}</p>
+              <h3 className="font-semibold text-[#1f2937] text-lg mb-3">{s.title}</h3>
+              <p className="text-sm text-[#6b7280] leading-relaxed">{s.desc}</p>
             </div>
           ))}
         </div>

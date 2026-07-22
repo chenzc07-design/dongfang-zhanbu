@@ -13,7 +13,7 @@ export default function StepCard({ num, icon, title, desc }: StepCardProps) {
       </span>
       <div className="text-3xl mt-2 mb-3">{icon}</div>
       <h3 className="font-semibold text-[#ede4d8] text-base mb-2">{title}</h3>
-      <p className="text-sm text-[#9b8e7c] leading-relaxed">{desc}</p>
+      <p className="text-sm text-[#9ca3af] leading-relaxed">{desc}</p>
     </div>
   );
 }

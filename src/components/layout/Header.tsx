@@ -14,20 +14,20 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 border-b border-[rgba(184,134,11,0.08)] bg-[rgba(250,248,244,0.92)] backdrop-blur-xl">
+    <header className="sticky top-0 z-50 border-b border-gray-200 bg-white/90 backdrop-blur-xl">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
         <a href="/" className="flex items-center gap-3">
           <span className="text-2xl">☯</span>
           <div>
-            <span className="font-semibold text-[#2c2416] tracking-wide">Dongfang Divination</span>
-            <span className="hidden sm:inline text-sm text-[#9b8e7c] ml-2">· Authentic BaZi Reading</span>
+            <span className="font-semibold text-[#1f2937] tracking-wide">Dongfang Divination</span>
+            <span className="hidden sm:inline text-sm text-[#9ca3af] ml-2">· Authentic BaZi Reading</span>
           </div>
         </a>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex gap-6 text-sm text-[#6b5e4a]">
+        <nav className="hidden md:flex gap-6 text-sm text-[#6b7280]">
           {navItems.map(item => (
-            <a key={item.href} href={item.href} className="hover:text-[#b8860b] transition-colors">
+            <a key={item.href} href={item.href} className="hover:text-[#7c3aed] transition-colors">
               {item.label}
             </a>
           ))}
@@ -36,7 +36,7 @@ export default function Header() {
         {/* Mobile hamburger */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-[#6b5e4a] hover:text-[#b8860b] p-2"
+          className="md:hidden text-[#6b7280] hover:text-[#7c3aed] p-2"
           aria-label="Toggle menu"
         >
           {menuOpen ? (
@@ -53,14 +53,14 @@ export default function Header() {
 
       {/* Mobile dropdown menu */}
       {menuOpen && (
-        <div className="md:hidden border-t border-[rgba(184,134,11,0.08)] bg-[rgba(250,248,244,0.98)] backdrop-blur-xl">
+        <div className="md:hidden border-t border-gray-200 bg-white/95 backdrop-blur-xl">
           <nav className="flex flex-col py-3 px-4 gap-1">
             {navItems.map(item => (
               <a
                 key={item.href}
                 href={item.href}
                 onClick={() => setMenuOpen(false)}
-                className="text-sm text-[#6b5e4a] hover:text-[#b8860b] py-3 px-3 rounded-lg hover:bg-[rgba(184,134,11,0.04)] transition-all"
+                className="text-sm text-[#6b7280] hover:text-[#7c3aed] py-3 px-3 rounded-lg hover:bg-purple-50 transition-all"
               >
                 {item.label}
               </a>

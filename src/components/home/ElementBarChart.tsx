@@ -21,8 +21,8 @@ export default function ElementBarChart({ elements }: { elements: ElementProfile
   return (
     <div className="card-warm rounded-2xl p-6">
       <div className="flex items-center gap-2 mb-5">
-        <span className="text-[#b8860b] text-lg">☯</span>
-        <h3 className="font-semibold text-[#2c2416]">Five Elements Profile · 五行能量</h3>
+        <span className="text-[#7c3aed] text-lg">☯</span>
+        <h3 className="font-semibold text-[#1f2937]">Five Elements Profile · 五行能量</h3>
       </div>
       <div className="space-y-3">
         {elementArray.map(el => {
@@ -31,8 +31,8 @@ export default function ElementBarChart({ elements }: { elements: ElementProfile
           return (
             <div key={el.name}>
               <div className="flex items-center justify-between mb-1">
-                <span className="text-sm text-[#6b5e4a]">{s.emoji} {s.name} {s.cn}</span>
-                <span className="text-xs text-[#9b8e7c]">{el.score.toFixed(1)}</span>
+                <span className="text-sm text-[#6b7280]">{s.emoji} {s.name} {s.cn}</span>
+                <span className="text-xs text-[#9ca3af]">{el.score.toFixed(1)}</span>
               </div>
               <div className="h-2 bg-[#f0ebe0] rounded-full overflow-hidden">
                 <div className={`h-full rounded-full transition-all duration-700 ease-out ${s.bar}`}

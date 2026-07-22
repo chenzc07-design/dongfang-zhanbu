@@ -104,12 +104,8 @@ export default function Home() {
   };
 
   return (
-    <div className="relative min-h-screen bg-[#faf8f4] text-[#2c2416] overflow-hidden">
-      {/* 宣纸质感背景 */}
-      <div className="subtle-bg" />
-
-      <div className="relative z-10">
-        <Header />
+    <div className="min-h-screen bg-white text-gray-900">
+      <Header />
 
         <main>
           {/* 1. Hero + Form */}
@@ -153,7 +149,6 @@ export default function Home() {
         </main>
 
         <Footer />
-      </div>
     </div>
   );
 }

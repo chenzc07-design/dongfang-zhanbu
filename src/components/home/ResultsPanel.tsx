@@ -24,9 +24,9 @@ export default function ResultsPanel({ result, email, emailSubmitted, onEmailCha
         <div className="space-y-6 stagger-animate">
           {/* Day Master */}
           <div className="card-warm rounded-2xl p-8 text-center">
-            <p className="text-xs text-[#b8860b] tracking-[0.2em] uppercase mb-2">Your Day Master · 日主</p>
-            <h2 className="text-4xl font-bold text-[#2c2416] mb-1">{result.dayMaster}</h2>
-            <p className="text-[#6b5e4a] text-sm">{result.dayMasterElement} · {result.dayMasterYinYang}</p>
+            <p className="text-xs text-[#7c3aed] tracking-[0.2em] uppercase mb-2">Your Day Master · 日主</p>
+            <h2 className="text-4xl font-bold text-[#1f2937] mb-1">{result.dayMaster}</h2>
+            <p className="text-[#6b7280] text-sm">{result.dayMasterElement} · {result.dayMasterYinYang}</p>
           </div>
 
           {/* Four Pillars */}
@@ -39,17 +39,17 @@ export default function ResultsPanel({ result, email, emailSubmitted, onEmailCha
 
           <div className="mt-4 flex flex-wrap gap-x-6 gap-y-1 text-sm justify-center">
             <span className="text-emerald-600">✦ Lucky: {result.luckyElement}</span>
-            <span className="text-[#ccc0a8]">|</span>
-            <span className="text-[#6b5e4a]">Balance: {result.unfavorableElement}</span>
+            <span className="text-[#d1d5db]">|</span>
+            <span className="text-[#6b7280]">Balance: {result.unfavorableElement}</span>
           </div>
 
           {/* Personality */}
           <div className="card-warm rounded-2xl p-6">
-            <h3 className="font-semibold text-[#2c2416] mb-4">Personality Profile · 性格</h3>
+            <h3 className="font-semibold text-[#1f2937] mb-4">Personality Profile · 性格</h3>
             <ul className="space-y-2.5">
               {result.personalityTraits.map((trait, i) => (
-                <li key={i} className="flex items-start gap-3 text-sm text-[#6b5e4a] leading-relaxed">
-                  <span className="text-[#b8860b] mt-0.5 shrink-0">✦</span>
+                <li key={i} className="flex items-start gap-3 text-sm text-[#6b7280] leading-relaxed">
+                  <span className="text-[#7c3aed] mt-0.5 shrink-0">✦</span>
                   {trait}
                 </li>
               ))}
@@ -57,15 +57,15 @@ export default function ResultsPanel({ result, email, emailSubmitted, onEmailCha
           </div>
 
           {/* Summary */}
-          <div className="card-warm rounded-2xl p-6 border-l-4 border-[#b8860b]">
-            <p className="text-sm text-[#6b5e4a] leading-relaxed">{result.summary}</p>
+          <div className="card-warm rounded-2xl p-6 border-l-4 border-[#7c3aed]">
+            <p className="text-sm text-[#6b7280] leading-relaxed">{result.summary}</p>
           </div>
 
           {/* Email capture */}
           {!emailSubmitted && (
-            <div className="card-warm rounded-2xl p-6 bg-[#f7f3ec]">
-              <h3 className="font-semibold text-[#2c2416] mb-2">📜 Unlock Your Full Report</h3>
-              <p className="text-sm text-[#6b5e4a] mb-4">
+            <div className="card-warm rounded-2xl p-6 bg-[#f9fafb]">
+              <h3 className="font-semibold text-[#1f2937] mb-2">📜 Unlock Your Full Report</h3>
+              <p className="text-sm text-[#6b7280] mb-4">
                 Enter your email to see pricing and get your complete 20+ page PDF destiny report.
               </p>
               <div className="flex gap-2">

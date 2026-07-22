@@ -14,8 +14,8 @@ export default function GalleryCard({ src, title, desc, large, small }: GalleryC
           className="w-full h-full object-cover transition-all duration-500 group-hover:scale-105" />
       </div>
       <div className="p-4">
-        <p className="text-[#2c2416] text-sm font-semibold mb-1">{title}</p>
-        {desc && <p className="text-[#9b8e7c] text-xs">{desc}</p>}
+        <p className="text-[#1f2937] text-sm font-semibold mb-1">{title}</p>
+        {desc && <p className="text-[#9ca3af] text-xs">{desc}</p>}
       </div>
     </div>
   );

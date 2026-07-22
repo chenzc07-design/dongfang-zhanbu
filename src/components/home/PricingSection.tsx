@@ -41,12 +41,12 @@ export default function PricingSection({ onCheckout, checkoutLoading }: PricingS
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="text-center mb-12">
           <div className="flex items-center justify-center gap-3 mb-3">
-            <div className="w-8 h-px bg-gradient-to-r from-transparent to-[rgba(184,134,11,0.3)]" />
-            <span className="text-[#b8860b] text-xs tracking-[0.3em] uppercase font-medium">Choose Your Path</span>
-            <div className="w-8 h-px bg-gradient-to-r from-[rgba(184,134,11,0.3)] to-transparent" />
+            <div className="w-8 h-px bg-gradient-to-r from-transparent to-purple-200" />
+            <span className="text-[#7c3aed] text-xs tracking-[0.3em] uppercase font-medium">Choose Your Path</span>
+            <div className="w-8 h-px bg-gradient-to-r from-purple-200 to-transparent" />
           </div>
-          <h2 className="text-2xl md:text-3xl font-bold text-[#2c2416]">Your Life Blueprint Report</h2>
-          <p className="text-[#6b5e4a] text-sm mt-2">
+          <h2 className="text-2xl md:text-3xl font-bold text-[#1f2937]">Your Life Blueprint Report</h2>
+          <p className="text-[#6b7280] text-sm mt-2">
             One-time purchase · Professionally crafted PDF delivered to your email · 24-hour processing for authenticity
           </p>
         </div>
@@ -57,11 +57,11 @@ export default function PricingSection({ onCheckout, checkoutLoading }: PricingS
 
         {/* Feature comparison table */}
         <div className="max-w-2xl mx-auto mt-10 card-warm rounded-2xl p-6">
-          <h3 className="text-sm font-semibold text-[#2c2416] mb-4 text-center">What&apos;s Included</h3>
+          <h3 className="text-sm font-semibold text-[#1f2937] mb-4 text-center">What&apos;s Included</h3>
           <div className="grid grid-cols-3 gap-4 text-xs">
-            <div className="text-[#9b8e7c] font-medium pt-2">Feature</div>
-            <div className="text-center text-[#b8860b] font-semibold">Complete ($14.99)</div>
-            <div className="text-center text-[#9b2d30] font-semibold">Premium ($34.99)</div>
+            <div className="text-[#9ca3af] font-medium pt-2">Feature</div>
+            <div className="text-center text-[#7c3aed] font-semibold">Complete ($14.99)</div>
+            <div className="text-center text-[#ec4899] font-semibold">Premium ($34.99)</div>
             {[
               ['Four Pillars Analysis', '✓', '✓'],
               ['Five Elements Profile', '✓', '✓'],
@@ -74,8 +74,8 @@ export default function PricingSection({ onCheckout, checkoutLoading }: PricingS
               ['Feng Shui Guide', '—', '✓'],
               ['3-Month Email Guidance', '—', '✓'],
             ].map(([feature, full, premium]) => (
-              <div key={feature} className="col-span-3 grid grid-cols-3 gap-4 border-t border-[rgba(184,134,11,0.06)] py-2.5">
-                <span className="text-[#6b5e4a]">{feature}</span>
+              <div key={feature} className="col-span-3 grid grid-cols-3 gap-4 border-t border-gray-100 py-2.5">
+                <span className="text-[#6b7280]">{feature}</span>
                 <span className="text-center text-emerald-600">{full}</span>
                 <span className="text-center text-emerald-600">{premium}</span>
               </div>
